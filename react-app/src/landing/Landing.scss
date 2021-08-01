@@ -1,0 +1,27 @@
+$theme-colors: (
+    "primary":#F16B44, 
+    "secondary":#5E54F1,
+
+);
+.get_started{
+    position:relative;
+    left:3%;
+    top:10%;
+    width:300px
+    
+}
+
+.button{
+    position:absolute;
+    top:125.5%;
+    width:350px
+}
+
+.grp6{
+    position:absolute;
+    left:66.95%;
+    height:423px;
+    width: 423px;
+}
+
+@import "~bootstrap/scss/bootstrap"; 

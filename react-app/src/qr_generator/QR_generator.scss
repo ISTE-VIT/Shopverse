@@ -1,0 +1,23 @@
+$theme-colors: (
+    "primary":#0C9ACC, 
+    "secondary":#5E54F1,
+
+);
+.qr{
+    position: absolute;
+    border-style:solid;
+    border-width: medium;
+    padding: 20px 20px;
+    border-radius: 10px;
+    border-color: #0C9ACC;
+    top:25%;
+    left:40%
+}
+
+.buttons{
+    position:absolute;
+    top:80%;
+    left: 42.75%
+}
+
+@import "~bootstrap/scss/bootstrap"; 
