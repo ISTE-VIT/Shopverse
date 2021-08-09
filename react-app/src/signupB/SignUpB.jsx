@@ -3,9 +3,40 @@ import { Image , Row, Col, Container, Form } from 'react-bootstrap'
 import img1 from  "./images/Group 150 (1).svg"
 import img2 from  "./images/Group 151.svg"
 import img3 from "./images/LOGO.svg"
-import { Jumbotron, Button} from 'react-bootstrap'
+import { Jumbotron, Button, Alert} from 'react-bootstrap'
+import { useRef , useState} from 'react'
+import { useAuth } from '../context/AuthContext'
+
 
 export default function SignUpB() {
+    const emailRef=useRef();
+    const phoneRef=useRef();
+    const passwordRef=useRef();
+    const confirmRef=useRef();
+    const {signUp}= useAuth()
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
+
+    async function handleSubmit(e){
+        e.preventDefault()
+
+        if(passwordRef.current.value!==confirmRef.current.value)
+        {
+            return setError('Passwords do not match')
+        }
+        try {
+            setError('')
+            setLoading(true)
+             await signUp(emailRef, phoneRef , passwordRef , confirmRef)
+            
+        } catch {
+            setError("Failed to create account")
+        }
+        setLoading(false)
+
+    }
+
+
     return (
         <div>     
             <div style={{position:"absolute", width:"294px", height:"294px", right:"0%"}}>
@@ -25,28 +56,31 @@ export default function SignUpB() {
                     <p className="lead">Let's get you all set up.</p>
                 </Jumbotron>
                 <div style={{position:"absolute",top:"45%", left:"10%", width:"120vh"}}>
-                <Row>
-                    <Col>
-                    <Form.Control variant="secondary" type="text" placeholder="Name" /> 
-                    <br/>
-                    </Col>
-                    <Col>
-                    <Form.Control type="text" placeholder="Phone Number" />
-                    <br/>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                    <Form.Control type="text" placeholder="Password" />
-                    <br/>
-                    </Col>
-                    <Col>
-                    <Form.Control type="text" placeholder="Confirm Password" />
-                    <br/>
-                    </Col>
-                </Row>
+                    <Form onSubmit={handleSubmit}>
+                    {error && <Alert variant="danger">{error}</Alert>}
+                    <Row>
+                        <Col>
+                        <Form.Control ref={emailRef} id="email" type="email" placeholder="Email" required/> 
+                        <br/>
+                        </Col>
+                        <Col>
+                        <Form.Control ref={phoneRef} id="phone-number" type="text" placeholder="Phone Number" />
+                        <br/>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                        <Form.Control ref={passwordRef} type="password" placeholder="Password" />
+                        <br/>
+                        </Col>
+                        <Col>
+                        <Form.Control ref={confirmRef} type="password" placeholder="Confirm Password" />
+                        <br/>
+                        </Col>
+                    </Row>
+                    </Form>
                 <div style={{textAlign:"left"}}>
-                <Button style={{backgroundColor:"#5E54F1", borderColor:"#5E54F1"}}>Primary</Button>
+                <Button disabled={loading} type="submit" style={{backgroundColor:"#5E54F1", borderColor:"#5E54F1"}}>Sign Up</Button>
                 <br/>
                 <br/>
                 Already have an account? click here to<Button variant="link" style={{color:"#5E54F1"}}>Sign In</Button>
@@ -61,33 +95,3 @@ export default function SignUpB() {
 
 
 
-// const [auth, setAuth] = useState(false|| window.localStorage.getItem('auth') === 'true');
-// const [token,setToken] = useState('');
-
-//   useEffect(()=>
-//   {
-//     firebase.auth().onAuthStateChanged((userCred)=>{
-//       if(userCred)
-//       {
-//         setAuth(true)
-//         window.localStorage.setItem('auth','true')
-//         userCred.getIdToken().then((token)=>{
-//           setToken(token)
-//         })
-//       }
-//       console.log(userCred)
-//     })
-//   });
-
-//   var provider = new firebase.auth.GoogleAuthProvider();
-
-//   const loginWithGoogle = ()=>{
-//     firebase.auth().signInWithPopup(provider).then((userCred)=>{
-//       if(userCred)
-//       {
-//         setAuth(true)
-//       }
-//       console.log(userCred)
-//     });
- 
-// };

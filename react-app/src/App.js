@@ -1,10 +1,12 @@
 import './App.css';
-import Navbar from './navbar';
+import SignUpB from './signupB';
+// import Navbar from './navbar';
 // import Landing from './landing';
 // import SignUpS from './signupS';
 // import ThankYouS from './thankyouS';
 // import Footer from './footer';
-import QR_generator from './qr_generator';
+// import QR_generator from './qr_generator';
+import {AuthProvider} from './context/AuthContext'
 
 function App() {
   return (
@@ -21,12 +23,15 @@ function App() {
 
       <script>var Alert = ReactBootstrap.Alert;</script>
 
-      <Navbar/>
+      {/* <Navbar/> */}
       {/* <Landing/> */}
       {/* <SignUpS/> */}
       {/* <ThankYouS/> */}
-      <QR_generator/>
+      {/* <QR_generator/> */}
       {/* <Footer/> */}
+      <AuthProvider>
+      <SignUpB/>
+      </AuthProvider>
     </div>
   );
 }
