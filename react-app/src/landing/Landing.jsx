@@ -9,6 +9,7 @@ import img3 from './images/Group 101.svg'
 import img4 from './images/image 3.svg'
 import img5 from './images/Group 77.svg'
 import FeatherIcons from 'feather-icons-react'
+import { Link } from 'react-router-dom';
 
 export default function Landing() {
     return (
@@ -26,7 +27,9 @@ export default function Landing() {
                     <p className="lead">For those who wish to buy products from these stores safely.</p>
                     <hr className="my-2" />
                     <p className="lead">
-                    <Button style={{backgroundColor:"#5E54F1"}}>Learn More</Button>
+                    <Link to="/signInB">
+                    <Button style={{backgroundColor:"#5E54F1"}}>Get Started</Button>
+                    </Link>
                     </p>
                 </Jumbotron>
                 </div>

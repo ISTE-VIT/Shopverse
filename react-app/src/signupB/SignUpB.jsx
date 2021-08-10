@@ -6,6 +6,7 @@ import img3 from "./images/LOGO.svg"
 import { Jumbotron, Button, Alert} from 'react-bootstrap'
 import { useRef , useState} from 'react'
 import { useAuth } from '../context/AuthContext'
+import { Link, useHistory } from 'react-router-dom'
 
 
 export default function SignUpB() {
@@ -13,24 +14,29 @@ export default function SignUpB() {
     const phoneRef=useRef();
     const passwordRef=useRef();
     const confirmRef=useRef();
-    const {signUp}= useAuth()
+    const {signup}= useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    const history = useHistory()
 
     async function handleSubmit(e){
         e.preventDefault()
 
-        if(passwordRef.current.value!==confirmRef.current.value)
-        {
-            return setError('Passwords do not match')
-        }
+        if (passwordRef.current.value !== confirmRef.current.value) {
+            return setError("Passwords do not match")
+          }
+        if (phoneRef.current.value.length<10) {
+            return setError("Invalid phone number")
+          }
         try {
             setError('')
             setLoading(true)
-             await signUp(emailRef, phoneRef , passwordRef , confirmRef)
+             await signup(emailRef.current.value, passwordRef.current.value )
+             history.push("/thankYouB")
             
-        } catch {
+        } catch(error) {
             setError("Failed to create account")
+            console.log(error)
         }
         setLoading(false)
 
@@ -49,7 +55,9 @@ export default function SignUpB() {
             <Row>
             <Col xs={12} md={8}>
                 <div  style={{position:"absolute", width:"150px", height:"10px",left:"5%"}}>
-                <Image src={img3} fluid/>
+                    <Link to="/">
+                    <Image src={img3} fluid/>
+                    </Link>
                 </div>
                 <Jumbotron style={{position:"absolute",top:"20%", left:"10%",width:"500px", textAlign:"left"}}>
                     <h1 className="display-4" style={{color:"#5E54F1"}}>Create an Account</h1>
@@ -78,13 +86,13 @@ export default function SignUpB() {
                         <br/>
                         </Col>
                     </Row>
+                    <div style={{textAlign:"left"}}>
+                    <Button disabled={loading} type="submit" style={{backgroundColor:"#5E54F1", borderColor:"#5E54F1"}}>Sign Up</Button>
+                    <br/>
+                    <br/>
+                    Already have an account? click here to<Link to="/signInB"><Button variant="link" style={{color:"#5E54F1"}}>Sign In</Button></Link>
+                    </div>
                     </Form>
-                <div style={{textAlign:"left"}}>
-                <Button disabled={loading} type="submit" style={{backgroundColor:"#5E54F1", borderColor:"#5E54F1"}}>Sign Up</Button>
-                <br/>
-                <br/>
-                Already have an account? click here to<Button variant="link" style={{color:"#5E54F1"}}>Sign In</Button>
-                </div>
                 </div>
             </Col>
             </Row>
