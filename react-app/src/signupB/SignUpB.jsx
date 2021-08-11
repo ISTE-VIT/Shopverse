@@ -6,42 +6,41 @@ import img3 from "./images/LOGO.svg"
 import { Jumbotron, Button, Alert} from 'react-bootstrap'
 import { useRef , useState} from 'react'
 import { useAuth } from '../context/AuthContext'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 
 
-export default function SignUpB() {
+var SignUpB=()=> {
     const emailRef=useRef();
     const phoneRef=useRef();
     const passwordRef=useRef();
     const confirmRef=useRef();
-    const {signup}= useAuth()
+    const {SignUp}= useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    const history = useHistory()
+    // let history = useHistory()
 
-    async function handleSubmit(e){
+     let handleSubmit= async(e)=> {
         e.preventDefault()
-
+    
         if (passwordRef.current.value !== confirmRef.current.value) {
-            return setError("Passwords do not match")
-          }
-        if (phoneRef.current.value.length<10) {
-            return setError("Invalid phone number")
-          }
-        try {
-            setError('')
-            setLoading(true)
-             await signup(emailRef.current.value, passwordRef.current.value )
-             history.push("/thankYouB")
-            
-        } catch(error) {
-            setError("Failed to create account")
-            console.log(error)
+          return setError("Passwords do not match")
         }
+        if (phoneRef.current.value.length<10 ) {
+          return setError("Invalid Phone Number")
+        }
+    
+        try {
+          setError("")
+          setLoading(true)
+          await SignUp(emailRef.current.value, passwordRef.current.value)
+        //   history.push("/")
+        } catch {
+          setError("Failed to create an account")
+        }
+    
         setLoading(false)
-
-    }
-
+      }
 
     return (
         <div>     
@@ -101,5 +100,5 @@ export default function SignUpB() {
     )
 }
 
-
+export default SignUpB
 

@@ -39,7 +39,9 @@ export default function Landing() {
                     <p className="lead">For shop owners, who wish to increase their sales and ensuring safe purchase of the products in their store.</p>
                     <hr className="my-2" />
                     <p className="lead">
+                    <Link to="/signUpS">
                     <Button style={{backgroundColor:"#F16B44", borderColor:"#F16B44"}}>Get Started</Button>
+                    </Link>
                     </p>
                 </Jumbotron>
                 </div>

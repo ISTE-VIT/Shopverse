@@ -2,14 +2,16 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 // import Navbar from './navbar';
 import Landing from './landing';
-// import SignUpS from './signupS';
+import SignUpS from './signupS';
 // import ThankYouS from './thankyouS';
 // import Footer from './footer';
 // import QR_generator from './qr_generator';
 import SignUpB from './signupB';
+import SignInS from './signins';
 import {AuthProvider} from './context/AuthContext'
 import SignInB from './signinb';
 import ThankYouB from './thankyoub';
+
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
             <Route exact path="/" component={Landing} />
             <Route exact path="/signInB" component={SignInB} />
             <Route exact path="/signUpB" component={SignUpB} />
+            <Route exact path="/signUpS" component={SignUpS} />
+            <Route exact path="/signInS" component={SignInS} />
             <Route exact path="/thankYouB" component={ThankYouB} />
           </Switch>
         </AuthProvider>
