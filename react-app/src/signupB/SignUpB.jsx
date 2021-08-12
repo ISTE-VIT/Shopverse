@@ -7,7 +7,7 @@ import { Jumbotron, Button, Alert} from 'react-bootstrap'
 import { useRef , useState} from 'react'
 import { useAuth } from '../context/AuthContext'
 import { Link } from 'react-router-dom'
-// import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 
 var SignUpB=()=> {
@@ -18,7 +18,7 @@ var SignUpB=()=> {
     const {SignUp}= useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    // let history = useHistory()
+    let history = useHistory()
 
      let handleSubmit= async(e)=> {
         e.preventDefault()
@@ -34,7 +34,7 @@ var SignUpB=()=> {
           setError("")
           setLoading(true)
           await SignUp(emailRef.current.value, passwordRef.current.value)
-        //   history.push("/")
+          history.push("/")
         } catch {
           setError("Failed to create an account")
         }
