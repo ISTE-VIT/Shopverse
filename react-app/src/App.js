@@ -5,27 +5,18 @@ import Landing from './landing';
 import SignUpS from './signupS';
 // import ThankYouS from './thankyouS';
 // import Footer from './footer';
-// import QR_generator from './qr_generator';
+import QR_generator from './qr_generator';
 import SignUpB from './signupB';
 import SignInS from './signins';
 import {AuthProvider} from './context/AuthContext'
 import SignInB from './signinb';
 import ThankYouB from './thankyoub';
+import ThankYouS from './thankyouS/ThankYouS';
 
 
 function App() {
   return (
     <div className="App">
-      <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
-
-      <script
-        src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
-        crossorigin></script>
-
-      <script
-        src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
-        crossorigin></script>
-
       <script>var Alert = ReactBootstrap.Alert;</script>
       <Router>
         <AuthProvider>
@@ -36,6 +27,8 @@ function App() {
             <Route exact path="/signUpS" component={SignUpS} />
             <Route exact path="/signInS" component={SignInS} />
             <Route exact path="/thankYouB" component={ThankYouB} />
+            <Route exact path="/thankYouS" component={ThankYouS} />
+            <Route exact path="/QR_Generation" component={QR_generator} />
           </Switch>
         </AuthProvider>
       </Router>

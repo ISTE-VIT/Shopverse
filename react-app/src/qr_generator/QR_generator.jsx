@@ -1,37 +1,49 @@
-import React from "react";
-import QRCode from "react-qr-code";
-import { Container, Row, Col, Jumbotron, Button } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './QR_generator.scss'
-import Footer from "../footer";
-
+import React from 'react'
+import img1 from  "./images/Group 160.svg"
+import img2 from  "./images/Group 62.svg"
+import img3 from "./images/LOGO.svg"
+import { Image , Row, Col, Container, Jumbotron } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import QR_code from 'react-qr-code'
+import "./QR_generator.css"
 
 export default function QR_generator() {
     return (
         <div>
-            <Container >
-                <Row>
-                <Jumbotron>
-                    <h1 className="display-4" style={{position:"relative", left:'1%', top:'9%'}}>QR CODE HAS BEEN GENERATED</h1>
-                </Jumbotron> 
-                <Col md="auto" className="qr"><QRCode value="hey" /></Col>
-                </Row>
-                <Row className="buttons">
-                    <Col>
-                    <Button variant="outline-primary"size="lg">
-                    SHARE
-                    </Button>{'\t'}
-                    </Col>
-                    <Col>      
-                    <Button variant="primary" size="lg" style={{color:"white"}}>
-                    SHARE
-                    </Button>{' '}   
-                   </Col>
-                </Row>
-            </Container>
-                <div>                  
-                <Footer/>
+                 
+            <div style={{position:"absolute", width:"144px", height:"144px", right:"0%", top:"0"}}>
+            <Image src={img1} fluid/>
+            </div>
+            <div style={{position:"absolute", bottom:"0",width:"200px",  left:"0%"}}>
+            <Image src={img2} fluid/>
+            </div>
+            <Container>
+            <Row>
+            <Col xs={12} md={8}>
+                <div  style={{position:"absolute", width:"150px", height:"10px",left:"5%"}}>
+                    <Link to="/">
+                    <Image src={img3} fluid/>
+                    </Link>
                 </div>
+                <Jumbotron style={{position:"absolute",top:"15%", left:"10%",width:"1000px", textAlign:"left"}}>
+                    <h1 className="display-4" style={{color:"black"}}>Your QR code has been generated</h1>
+                    <p className="lead" style={{width:"500px"}}>Instructions:</p>
+                    <p className="lead" style={{width:"500px"}}>1) Print the QR Code above.:</p>
+                    <p className="lead" style={{width:"500px"}}>2) Place the QR Code printout at the entrance of your shop to garner customers' attention.</p>
+                    <p className="lead" style={{width:"500px"}}>This would help prevent crowding in your shop and would ensure a pleasant shopping experience for your customers. This in turn would result in gaining loyal customers and an escalation in sales!</p>
+                </Jumbotron>
+                <div style={{position:"absolute",top:"45%", left:"10%", width:"120vh"}}>
+
+                </div>
+            </Col>
+            <Container>
+            <Col  style={{outlineColor:"#DD5A34",position:"absolute", right:"20%", top:"35%", height:"150px", width:"150px"}}>
+            <QR_code  value="hey"/>            
+            </Col>
+            </Container>
+            </Row>
+            </Container>
         </div>
+
     )
 }

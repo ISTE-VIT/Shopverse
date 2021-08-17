@@ -1,37 +1,48 @@
 import React from 'react'
-import { Row, Col, Container, Jumbotron, Image, Button} from 'react-bootstrap'
-import './ThankYouS.scss'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import img1 from './images/Saly-1.svg'
-import img2 from './images/Ellipse 22.svg'
+import { Image , Row, Col, Container } from 'react-bootstrap'
+import img1 from  "./images/Group 157.svg"
+import img2 from  "./images/Group 62.svg"
+import img3 from "./images/LOGO.svg"
+import { Jumbotron  } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
-export default function SignUpS() {
+
+var ThankYouS=()=> {
+
+
     return (
-        <div>
-        <Container>
-        <Row>
-            <Col>
-            <Image src={img2} className="ellipse" fluid />
-            <Image src={img1} className="s1" fluid/>
-            
-            </Col>
-            <Col>
-            <>
-            <div className="details">
-            <Jumbotron>
-                    <h1 className="display-2">THANK YOU</h1>
-                    <h3 className="display-6">FOR SIGNING UP</h3>
-                    <hr className="my-2" />
-                    <p className="lead">
-                        <Button  variant="link" className="b2h">Back to homepage</Button>
-                    </p>
-                </Jumbotron>  
-
+        <div>     
+            <div style={{position:"absolute", width:"372.5px", height:"372.5px", right:"0%"}}>
+            <Image src={img1} fluid/>
             </div>
-            </>
+            <div style={{position:"absolute", bottom:"0",width:"200px",  left:"0%"}}>
+            <Image src={img2} fluid/>
+            </div>
+            <Container>
+            <Row>
+            <Col xs={12} md={8}>
+                <div  style={{position:"absolute", width:"150px", height:"10px",left:"5%"}}>
+                    <Link to="/">
+                    <Image src={img3} fluid/>
+                    </Link>
+                </div>
+                <Jumbotron style={{position:"absolute",top:"25%", left:"25%",width:"500px", textAlign:"left"}}>
+                    <h1 className="display-1" style={{color:"black", textAlign:"center"}}>Thank you for Signing Up</h1>
+                    <p className="lead" style={{textAlign:"end"}}>
+                        <Link to ="/QR_Generation" style={{color:"#DD5A34"}}>    
+                        Generate QR
+                        </Link>
+                        </p>
+                </Jumbotron>
+                <div style={{position:"absolute",top:"45%", left:"10%", width:"60vh"}}>
+                    
+                </div>
             </Col>
-        </Row>
-        </Container>
+            </Row>
+            </Container>
         </div>
     )
 }
+
+export default ThankYouS
+

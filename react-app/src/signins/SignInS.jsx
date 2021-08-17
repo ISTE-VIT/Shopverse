@@ -3,11 +3,34 @@ import { Image , Row, Col, Container, Form } from 'react-bootstrap'
 import img1 from  "./images/Group 157.svg"
 import img2 from  "./images/Group 62.svg"
 import img3 from "./images/LOGO.svg"
-import { Jumbotron, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Jumbotron, Button, Alert } from 'react-bootstrap'
+import { useAuth } from '../context/AuthContext'
+import { useState, useRef } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
 
 var SignInS=()=> {
+    const emailRef = useRef()
+    const passwordRef = useRef()
+    const {login}=useAuth()
+    const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false) 
+    const history =useHistory()
+
+    async function handleSubmit(e) {
+        e.preventDefault()
+    
+        try {
+          setError("")
+          setLoading(true)
+          await login(emailRef.current.value, passwordRef.current.value)
+          history.push("/")
+        } catch {
+          setError("Failed to log in")
+        }
+    
+        setLoading(false)
+      }
 
 
     return (
@@ -31,22 +54,25 @@ var SignInS=()=> {
                     <p className="lead">Welcome Back</p>
                 </Jumbotron>
                 <div style={{position:"absolute",top:"45%", left:"10%", width:"60vh"}}>
-                    <Form >
+                <Form onSubmit={handleSubmit} >
+                {error && <Alert variant="danger">{error}</Alert>}
 
                     <Row>
                         <Col>
-                        <Form.Control  id="email" type="email" placeholder="Email" required/> 
+                        <Form.Control ref={emailRef} id="email" type="email" placeholder="Email" required/> 
                         <br/>
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                        <Form.Control  type="password" placeholder="Password" />
+                        <Form.Control ref={passwordRef} type="password" placeholder="Password" />
                         <br/>
                         </Col>
                     </Row>
                     <div style={{textAlign:"left"}}>
-                    <Button  type="submit" style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Sign In</Button>
+                    <Link to ="/QR_Generation"> 
+                    <Button disabled={loading} type="submit" style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Sign In</Button>
+                    </Link>
                     <br/>
                     <br/>
                     Don't have an account? click here to<Link to="/signUpS"><Button variant="link" style={{color:"#DD5A34"}}>Sign Up</Button></Link>

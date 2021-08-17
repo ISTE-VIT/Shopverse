@@ -3,11 +3,44 @@ import { Image , Row, Col, Container, Form } from 'react-bootstrap'
 import img1 from  "./images/Group 157.svg"
 import img2 from  "./images/Group 62.svg"
 import img3 from "./images/LOGO.svg"
-import { Jumbotron, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Jumbotron, Button, Alert } from 'react-bootstrap'
+import { Link, useHistory } from 'react-router-dom'
+import { useRef , useState } from 'react'
+import { useAuth } from '../context/AuthContext'
 
 
 var SignUpS=()=> {
+
+    const emailRef=useRef();
+    const phoneRef=useRef();
+    const passwordRef=useRef();
+    const confirmRef=useRef();
+    const {SignUp}= useAuth()
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
+    let history = useHistory()
+
+     let handleSubmit= async(e)=> {
+        e.preventDefault()
+    
+        if (passwordRef.current.value !== confirmRef.current.value) {
+          return setError("Passwords do not match")
+        }
+        if (phoneRef.current.value.length<10 ) {
+          return setError("Invalid Phone Number")
+        }
+    
+        try {
+          setError("")
+          setLoading(true)
+          await SignUp(emailRef.current.value, passwordRef.current.value)
+          history.push("/thankYouS")
+        } catch {
+          setError("Failed to create an account")
+        }
+    
+        setLoading(false)
+      }
 
 
     return (
@@ -31,30 +64,30 @@ var SignUpS=()=> {
                     <p className="lead">Let's get you all set up.</p>
                 </Jumbotron>
                 <div style={{position:"absolute",top:"45%", left:"10%", width:"120vh"}}>
-                    <Form >
-
+                <Form onSubmit={handleSubmit}>
+                    {error && <Alert variant="danger">{error}</Alert>}
                     <Row>
                         <Col>
-                        <Form.Control  id="email" type="email" placeholder="Email" required/> 
+                        <Form.Control ref={emailRef} id="email" type="email" placeholder="Email" required/> 
                         <br/>
                         </Col>
                         <Col>
-                        <Form.Control  id="phone-number" type="text" placeholder="Phone Number" />
+                        <Form.Control ref={phoneRef} id="phone-number" type="text" placeholder="Phone Number" />
                         <br/>
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                        <Form.Control  type="password" placeholder="Password" />
+                        <Form.Control ref={passwordRef} type="password" placeholder="Password" />
                         <br/>
                         </Col>
                         <Col>
-                        <Form.Control  type="password" placeholder="Confirm Password" />
+                        <Form.Control ref={confirmRef} type="password" placeholder="Confirm Password" />
                         <br/>
                         </Col>
                     </Row>
                     <div style={{textAlign:"left"}}>
-                    <Button  type="submit" style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Sign Up</Button>
+                    <Button disabled={loading} type="submit" style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Sign Up</Button>
                     <br/>
                     <br/>
                     Already have an account? click here to<Link to="/signInS"><Button variant="link" style={{color:"#DD5A34"}}>Sign In</Button></Link>

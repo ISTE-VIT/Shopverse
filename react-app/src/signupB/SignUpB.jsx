@@ -4,10 +4,10 @@ import img1 from  "./images/Group 150 (1).svg"
 import img2 from  "./images/Group 151.svg"
 import img3 from "./images/LOGO.svg"
 import { Jumbotron, Button, Alert} from 'react-bootstrap'
-import { useRef , useState} from 'react'
+import { useRef , useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { Link } from 'react-router-dom'
-// import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 
 var SignUpB=()=> {
@@ -18,7 +18,7 @@ var SignUpB=()=> {
     const {SignUp}= useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    // let history = useHistory()
+    let history = useHistory()
 
      let handleSubmit= async(e)=> {
         e.preventDefault()
@@ -34,7 +34,7 @@ var SignUpB=()=> {
           setError("")
           setLoading(true)
           await SignUp(emailRef.current.value, passwordRef.current.value)
-        //   history.push("/")
+          history.push("/thankYouB")
         } catch {
           setError("Failed to create an account")
         }
@@ -101,4 +101,3 @@ var SignUpB=()=> {
 }
 
 export default SignUpB
-
