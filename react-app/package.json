@@ -11,12 +11,19 @@
     "bootstrap": "^5.0.2",
     "feather-icons-react": "^0.4.3",
     "firebase": "^8.9.1",
+<<<<<<< HEAD
     "firebase-auth": "^0.1.2",
+=======
+>>>>>>> cca5653852f8150ce52c8b75ee2645d24fa2b8a6
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
+<<<<<<< HEAD
     "react-qr-code": "^2.0.1",
+=======
+    "react-qr-code": "^2.0.0",
+>>>>>>> cca5653852f8150ce52c8b75ee2645d24fa2b8a6
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "reactstrap": "^8.9.0",
