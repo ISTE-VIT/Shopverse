@@ -1,9 +1,8 @@
 class product{
-    constructor(name, price, quantity){
+    constructor(name, products){
 
-        this.name=quantity;
-        this.quantity=quantity;
-        this.price=quantity;
+        this.name=name;
+        this.products=products
     }
 
 }
