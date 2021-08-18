@@ -2,7 +2,7 @@ import React from 'react'
 import img1 from  "./images/Group 160.svg"
 import img2 from  "./images/Group 62.svg"
 import img3 from "./images/LOGO.svg"
-import { Image , Row, Col, Container, Jumbotron } from 'react-bootstrap'
+import { Image , Row, Col, Container, Jumbotron, Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import QR_code from 'react-qr-code'
 import "./QR_generator.css"
@@ -27,14 +27,16 @@ export default function QR_generator() {
                 </div>
                 <Jumbotron style={{position:"absolute",top:"15%", left:"10%",width:"1000px", textAlign:"left"}}>
                     <h1 className="display-4" style={{color:"black"}}>Your QR code has been generated</h1>
-                    <p className="lead" style={{width:"500px"}}>Instructions:</p>
-                    <p className="lead" style={{width:"500px"}}>1) Print the QR Code above.:</p>
-                    <p className="lead" style={{width:"500px"}}>2) Place the QR Code printout at the entrance of your shop to garner customers' attention.</p>
-                    <p className="lead" style={{width:"500px"}}>This would help prevent crowding in your shop and would ensure a pleasant shopping experience for your customers. This in turn would result in gaining loyal customers and an escalation in sales!</p>
+                    <p  style={{width:"500px"}}>Instructions:</p>
+                    <p  style={{width:"500px"}}>1) Print the QR Code above.:</p>
+                    <p  style={{width:"500px"}}>2) Place the QR Code printout at the entrance of your shop to garner customers' attention.</p>
+                    <p  style={{width:"500px"}}>This would help prevent crowding in your shop and would ensure a pleasant shopping experience for your customers. This in turn would result in gaining loyal customers and an escalation in sales!</p>
+                    <Row>
+                    <Col xs lg="2"><p1 style={{textAlign:"left"}}><Button onClick={() => window.print()} style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Print</Button></p1></Col>
+                    <Col xs lg="2"><p1 style={{textAlign:"left"}}><Link to="/Buisness_home"><Button style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Get Started</Button></Link></p1></Col>
+                    </Row>
+                  
                 </Jumbotron>
-                <div style={{position:"absolute",top:"45%", left:"10%", width:"120vh"}}>
-
-                </div>
             </Col>
             <Container>
             <Col  style={{outlineColor:"#DD5A34",position:"absolute", right:"20%", top:"35%", height:"150px", width:"150px"}}>

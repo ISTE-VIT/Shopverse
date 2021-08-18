@@ -12,6 +12,7 @@ import {AuthProvider} from './context/AuthContext'
 import SignInB from './signinb';
 import ThankYouB from './thankyoub';
 import ThankYouS from './thankyouS/ThankYouS';
+import HomeB from './homeB';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route exact path="/thankYouB" component={ThankYouB} />
             <Route exact path="/thankYouS" component={ThankYouS} />
             <Route exact path="/QR_Generation" component={QR_generator} />
+            <Route exact path="/Buisness_home" component={HomeB} />
           </Switch>
         </AuthProvider>
       </Router>

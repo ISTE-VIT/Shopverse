@@ -7,6 +7,7 @@ import { Jumbotron, Button, Alert } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
 import { useRef , useState } from 'react'
 import { useAuth } from '../context/AuthContext'
+import './SignUpS.css'
 
 
 var SignUpS=()=> {

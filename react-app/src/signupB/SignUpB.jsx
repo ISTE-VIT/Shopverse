@@ -34,11 +34,7 @@ var SignUpB=()=> {
           setError("")
           setLoading(true)
           await SignUp(emailRef.current.value, passwordRef.current.value)
-<<<<<<< HEAD
-          history.push("/thankYouB")
-=======
           history.push("/")
->>>>>>> cca5653852f8150ce52c8b75ee2645d24fa2b8a6
         } catch {
           setError("Failed to create an account")
         }

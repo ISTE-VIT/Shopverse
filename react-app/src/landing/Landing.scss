@@ -2,3 +2,7 @@
     width: 10px;
     height: 10px 
 }
+.btn-default:focus {
+    outline: none;
+    box-shadow: none;
+  }
