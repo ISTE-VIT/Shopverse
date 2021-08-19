@@ -1,0 +1,5 @@
+.orders{
+    flex: 1;
+    overflow-y: scroll;
+    overflow-y: hidden;
+}
