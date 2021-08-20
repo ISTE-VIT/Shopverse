@@ -6,7 +6,7 @@ export default function PendingOrders() {
     return (
         <div>
             <Container>
-                <div style={{position:"absolute",top:"50%", width:"1000px",height:"320px", overflowY:"scroll", overflowX:"hidden"}}>
+            <div style={{position:"absolute",top:"50%", width:"1000px",height:"320px", overflowY:"scroll", overflowX:"hidden"}}>
                     <Row>
                         <Col>
                         <Card style={{borderColor:"#DD5A34",width:"600px", borderWidth:"1.5px"}} body>Order Id</Card>
