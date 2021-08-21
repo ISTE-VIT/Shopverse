@@ -1,10 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-// import Navbar from './navbar';
 import Landing from './landing';
 import SignUpS from './signupS';
 // import ThankYouS from './thankyouS';
-// import Footer from './footer';
 import QR_generator from './qr_generator';
 import SignUpB from './signupB';
 import SignInS from './signins';
@@ -14,6 +12,8 @@ import ThankYouB from './thankyoub';
 import ThankYouS from './thankyouS/ThankYouS';
 import HomeB from './homeB';
 import AddItem from './additem';
+import UpdateItem from './updateitem';
+import OrderNumber from './ordernumber';
 
 
 function App() {
@@ -33,6 +33,8 @@ function App() {
             <Route exact path="/QR_Generation" component={QR_generator} />
             <Route exact path="/Buisness_home" component={HomeB} />
             <Route exact path="/Add_Item" component={AddItem} />
+            <Route exact path="/Update_Item" component={UpdateItem} />
+            <Route exact path="/Order_Number" component={OrderNumber} />
           </Switch>
         </AuthProvider>
       </Router>

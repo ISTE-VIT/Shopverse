@@ -93,7 +93,7 @@ export default function AddItem() {
                 </Col>
                 <Col>
                 <div 
-                // style={{height:"20%", width:"20%"}}
+                // style={{height:"200px", width:"200px"}}
                 >
                 {/* <Webcam/> */}
                 {/* <Camera

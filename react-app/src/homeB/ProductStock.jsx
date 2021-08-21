@@ -18,7 +18,9 @@ export default function ProductStock() {
                         </Col>
                         <br/>
                         <Col>
+                        <Link to ="/Update_Item">
                         <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"60%"}}>Update</Button>                        <br/>
+                        </Link>
                         </Col>
                         <br/>
                     </Row>
@@ -32,7 +34,9 @@ export default function ProductStock() {
                         </Col>
                         <br/>
                         <Col>
-                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"1.5%"}}>Update</Button>                        <br/>
+                        <Link to ="/Update_Item">
+                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"60%"}}>Update</Button>                        <br/>
+                        </Link>
                         </Col>
                         <br/>
                     </Row>
@@ -46,7 +50,9 @@ export default function ProductStock() {
                         </Col>
                         <br/>
                         <Col>
-                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"5%"}}>Update</Button>                        <br/>
+                        <Link to ="/Update_Item">
+                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"60%"}}>Update</Button>                        <br/>
+                        </Link>
                         </Col>
                         <br/>
                     </Row>
@@ -60,8 +66,9 @@ export default function ProductStock() {
                         </Col>
                         <br/>
                         <Col>
-                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"1.5%"}}>Update</Button>                        <br/>
-                        </Col>
+                        <Link to ="/Update_Item">
+                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"60%"}}>Update</Button>                        <br/>
+                        </Link>                        </Col>
                         <br/>
                     </Row>
                     <Row>
@@ -75,8 +82,9 @@ export default function ProductStock() {
                         </Col>
                         <br/>
                         <Col>
-                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"1.5%"}}>Update</Button>                        <br/>
-                        </Col>
+                        <Link to ="/Update_Item">
+                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"60%"}}>Update</Button>                        <br/>
+                        </Link>                        </Col>
                         <br/>
                     </Row>
                 </div>

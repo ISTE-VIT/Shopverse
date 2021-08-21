@@ -1,4 +1,5 @@
 import React from "react";
+import { Image, Row, Col, Container, Button } from "react-bootstrap";
 
 class Camera extends React.Component {
   constructor() {
@@ -110,9 +111,17 @@ class Camera extends React.Component {
 
   render() {
     const playerORImage = Boolean(this.state.imageDataURL) ? (
-      <img src={this.state.imageDataURL} alt="cameraPic" />
+      <Container>
+        <Row>
+          <Col>
+           <Image  style={{position:"absolute", top:"15%", left:"60%", width:"30%",height:"50%"}} src={this.state.imageDataURL} alt="cameraPic"rounded fluid/>
+          </Col>
+        </Row>
+      </Container>
+
+
     ) : (
-      <video
+      <video width="50%" height="50%" style={{position:"absolute", top:"15%", left:"50%"}}
         ref={(refrence) => {
           this.player = refrence;
         }}
@@ -123,9 +132,17 @@ class Camera extends React.Component {
     return (
       <div className="App">
         {playerORImage}
-        <button onClick={this.initializeMedia}>Take Photo</button>
-        <button onClick={this.capturePicture}>Capture</button>
-        <button onClick={this.switchCamera}>Switch</button>
+        <Container>
+          <Row>
+            <Col style={{position:"absolute", top:"70%", left:"55%", width:"500px"}}>
+            {/* <ButtonGroup aria-label="Basic example" style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}> */}
+              <Button style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}} onClick={this.initializeMedia}>Open Camera</Button>{' '}
+              <Button style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}} onClick={this.capturePicture}>Capture</Button>{' '}
+              <Button style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}} onClick={this.switchCamera}>Switch Camera</Button>{' '}
+            {/* </ButtonGroup> */}
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
