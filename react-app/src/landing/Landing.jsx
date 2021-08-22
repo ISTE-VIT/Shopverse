@@ -48,7 +48,7 @@ export default function Landing() {
                 </Row>
                 </Col>
                 <Col>
-                <div style={{position:"absolute", left:"60.44%",width:"500px", height:"10px"}}>
+                <div style={{position:"absolute", right:"0%",width:"500px", height:"10px"}}>
                 <Image src={img1} fluid/>
                 </div>
                 </Col>
@@ -59,7 +59,7 @@ export default function Landing() {
                         <h1 className="display-4">Who Are We</h1>
                         <p className="lead" style={{width:"40%",position:"absolute", left:"30%"}}>This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
                 </Jumbotron>
-                <div style={{position:"absolute",left:"-3.85%", top:"40%", width:"1175px", height:"1175px"}}>
+                <div style={{position:"absolute",left:"-3.85%", right:"0%",top:"40%", width:"finally", height:"1175px", maxWidth:"fit-content"}}>
                 <Image src={img3} fluid/>
                 </div>
                 </Col>

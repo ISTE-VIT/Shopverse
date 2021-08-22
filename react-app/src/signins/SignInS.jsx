@@ -35,10 +35,10 @@ var SignInS=()=> {
 
     return (
         <div>     
-            <div style={{position:"absolute", width:"372.5px", height:"372.5px", right:"0%"}}>
+            <div style={{position:"absolute", height:"inherit",right:"0%", top:"0", zIndex:"9999999", width:"485px", height:"485px"}}>
             <Image src={img1} fluid/>
             </div>
-            <div style={{position:"absolute", bottom:"0",width:"200px",  left:"0%"}}>
+            <div style={{position:"absolute", bottom:"0",width:"200px", left:"0%"}}>
             <Image src={img2} fluid/>
             </div>
             <Container>

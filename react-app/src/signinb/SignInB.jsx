@@ -26,7 +26,7 @@ export default function SignInB() {
           setError("")
           setLoading(true)
           await login(emailRef.current.value, passwordRef.current.value)
-          history.push("/")
+          history.push("/Buyer_home")
         } catch {
           setError("Failed to log in")
         }
