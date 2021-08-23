@@ -23,7 +23,7 @@ class Test extends Component {
           delay={300}
           onError={this.handleError}
           onScan={this.handleScan}
-          style={{ width: '500px' }}
+          style={{ width: '400px' }}
         />
         <p>{this.state.result}</p>
       </div>

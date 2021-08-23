@@ -2,7 +2,7 @@ import React from 'react'
 import img1 from  "./images/Group 164.svg"
 import img2 from  "./images/Group 163.svg"
 import img3 from "./images/LOGO.svg"
-import {Image, Row, Col, Container, Alert} from 'react-bootstrap'
+import {Image, Row, Col, Container, Alert, Button} from 'react-bootstrap'
 import FeatherIcon from 'feather-icons-react'
 import {useAuth} from '../context/AuthContext'
 import { useHistory, Link } from "react-router-dom"
@@ -39,9 +39,21 @@ function HomeB() {
                 </div> 
                 </Col>
                 <Col>
-                <div style={{position:""}}>
+                        <div style={{ position: "absolute", left: "37.5%", top:"15%" }}>
                 <Test/>
                 </div>
+                </Col>
+            </Row>
+            <Row>
+                <Col style={{position:"absolute", top:"80%", textAlign:"center", left:"1%"}}>
+                    <Link to="/SearchByImage">
+                    <Button style={{backgroundColor:"#574EE0", borderColor:"#574EE0"}}>
+                        Search by image
+                    </Button>{' '}
+                    </Link>
+                <Button style={{backgroundColor:"#574EE0", borderColor:"#574EE0"}}>
+                     Search by text
+                </Button>
                 </Col>
             </Row>
             </Container>

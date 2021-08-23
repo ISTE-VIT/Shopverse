@@ -15,6 +15,8 @@ import HomeB from './homeB';
 import AddItem from './additem';
 import UpdateItem from './updateitem';
 import OrderNumber from './ordernumber';
+import ImageScan from './homeB/ImageScan';
+import ImageSearch from './homeB/ImageSearch';
 
 
 function App() {
@@ -22,7 +24,7 @@ function App() {
         div className = "App" >
         <
         script >
-        var Alert = ReactBootstrap.Alert; < /script> <
+        var Alert = ReactBootstrap.Alert; < /script>  <
         Router >
         <
         AuthProvider >
@@ -31,46 +33,52 @@ function App() {
         <
         Route exact path = "/"
         component = { Landing }
-        /> <
+        />  <
         Route exact path = "/signInB"
         component = { SignInB }
         /> <
         Route exact path = "/signUpB"
         component = { SignUpB }
-        /> <
+        />  <
         Route exact path = "/signUpS"
         component = { SignUpS }
         /> <
         Route exact path = "/signInS"
         component = { SignInS }
-        /> <
+        />  <
         Route exact path = "/thankYouB"
         component = { ThankYouB }
-        /> <
+        />  <
         Route exact path = "/thankYouS"
         component = { ThankYouS }
         /> <
         Route exact path = "/QR_Generation"
         component = { QR_generator }
-        /> <
+        />  <
         Route exact path = "/Buisness_home"
         component = { HomeS }
-        /> <
+        />  <
         Route exact path = "/Buyer_home"
         component = { HomeB }
-        /> <
+        />  <
         Route exact path = "/Add_Item"
         component = { AddItem }
-        /> <
+        />  <
         Route exact path = "/Update_Item"
         component = { UpdateItem }
-        /> <
+        />  <
         Route exact path = "/Order_Number"
         component = { OrderNumber }
         /> <
-        /Switch> <
-        /AuthProvider> <
-        /Router> <
+        Route exact path = "/SearchByImage"
+        component = { ImageScan }
+        /> <
+        Route exact path = "/Search_Images"
+        component = { ImageSearch }
+        /> < /
+        Switch > <
+        /AuthProvider>  < /
+        Router > <
         /div>
     );
 }
