@@ -2,7 +2,7 @@ import React from 'react';
 import img1 from  "./images/Group 164.svg"
 import img2 from  "./images/Group 163.svg"
 import img3 from "./images/LOGO.svg"
-import {Image, Row, Col, Container, Alert} from 'react-bootstrap'
+import {Image, Row, Col, Container, Alert, Button} from 'react-bootstrap'
 import FeatherIcon from 'feather-icons-react'
 import {useAuth} from '../context/AuthContext'
 import { useHistory, Link } from "react-router-dom"
@@ -31,7 +31,7 @@ const ImageScan = () => {
             {error && <Alert variant="danger">{error}</Alert>}
             <Row>
                 <Col>      
-                <h1 style={{position:"absolute", top:"10%", textAlign:"center", left:"45%"}}>
+                <h1 style={{position:"absolute", top:"10%", textAlign:"center", left:"43%"}}>
                     Scan Product
                 </h1>  
                     <div  style={{position:"absolute", width:"150px", height:"10px",left:"5%"}}>

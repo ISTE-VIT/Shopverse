@@ -59,8 +59,6 @@ export default function UpdateItem() {
                     <Image src={img4} fluid/>
                     </Link>
                 </div>
-                <div style={{position:"absolute", left:"10%", top:"20%"}}>
-                </div>
                 </Col>
             </Row>
             </Container>

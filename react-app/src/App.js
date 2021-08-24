@@ -17,6 +17,10 @@ import UpdateItem from './updateitem';
 import OrderNumber from './ordernumber';
 import ImageScan from './homeB/ImageScan';
 import ImageSearch from './homeB/ImageSearch';
+import SearchByText from './homeB/SearchByText';
+import Cart from './homeB/Cart';
+import Payment from './homeB/Token';
+import Token from './homeB/Token';
 
 
 function App() {
@@ -75,6 +79,15 @@ function App() {
         /> <
         Route exact path = "/Search_Images"
         component = { ImageSearch }
+        /> < 
+        Route exact path = "/SearchByText"
+        component = { SearchByText }
+        /> < 
+        Route exact path = "/Cart"
+        component = { Cart }
+        /> < 
+        Route exact path = "/Token"
+        component = { Token }
         /> < /
         Switch > <
         /AuthProvider>  < /

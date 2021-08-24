@@ -1,8 +1,9 @@
 import React from 'react'
 import { Image , Row, Col, Container, Form } from 'react-bootstrap'
-import img1 from  "./images/Group 150 (1).svg"
+import img1 from  "./images/Group 165.svg"
 import img2 from  "./images/Group 151.svg"
 import img3 from "./images/LOGO.svg"
+import img4 from "./images/Group 51.svg"
 import { Jumbotron, Button, Alert} from 'react-bootstrap'
 import { useRef , useState } from 'react'
 import { useAuth } from '../context/AuthContext'
@@ -44,7 +45,10 @@ var SignUpB=()=> {
 
     return (
         <div>     
-            <div style={{position:"absolute", width:"294px", height:"294px", right:"0%"}}>
+            <div style={{position:"absolute", width:"144px",right:"0%",top:"0"}}>
+            <Image src={img4} fluid/>
+            </div>
+            <div style={{position:"absolute", width:"294px",right:"0%",bottom:"0%"}}>
             <Image src={img1} fluid/>
             </div>
             <div style={{position:"absolute", bottom:"0",width:"200px",  left:"0%"}}>
@@ -63,7 +67,7 @@ var SignUpB=()=> {
                     <p className="lead">Let's get you all set up.</p>
                 </Jumbotron>
                 <div style={{position:"absolute",top:"45%", left:"10%", width:"120vh"}}>
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmit} style={{paddding:"0"}}>
                     {error && <Alert variant="danger">{error}</Alert>}
                     <Row>
                         <Col>
@@ -85,7 +89,7 @@ var SignUpB=()=> {
                         <br/>
                         </Col>
                     </Row>
-                    <div style={{textAlign:"left"}}>
+                    <div style={{textAlign:"left", height:"10px"}}>
                     <Button disabled={loading} type="submit" style={{backgroundColor:"#5E54F1", borderColor:"#5E54F1"}}>Sign Up</Button>
                     <br/>
                     <br/>

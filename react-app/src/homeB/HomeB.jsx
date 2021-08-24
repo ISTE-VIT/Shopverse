@@ -51,9 +51,11 @@ function HomeB() {
                         Search by image
                     </Button>{' '}
                     </Link>
+                    <Link to="/SearchByText">
                 <Button style={{backgroundColor:"#574EE0", borderColor:"#574EE0"}}>
                      Search by text
                 </Button>
+                    </Link>
                 </Col>
             </Row>
             </Container>

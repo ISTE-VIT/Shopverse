@@ -1,8 +1,9 @@
 import React from 'react'
 import { Image , Row, Col, Container, Form } from 'react-bootstrap'
-import img1 from  "./images/Group 150 (1).svg"
+import img1 from  "./images/Group 165.svg"
 import img2 from  "./images/Group 151.svg"
 import img3 from "./images/LOGO.svg"
+import img4 from "./images/Group 51.svg"
 import { Jumbotron, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext'
 import { useState, useRef } from 'react'
@@ -36,7 +37,10 @@ export default function SignInB() {
 
     return (
         <div>     
-            <div style={{position:"absolute", width:"294px", height:"294px", right:"0%"}}>
+            <div style={{position:"absolute",width:"144px", right:"0%",top:"0"}}>
+            <Image src={img4} fluid/>
+            </div>
+            <div style={{position:"absolute", width:"294px",right:"0%",bottom:"0%"}}>
             <Image src={img1} fluid/>
             </div>
             <div style={{position:"absolute", bottom:"0",width:"200px",  left:"0%"}}>

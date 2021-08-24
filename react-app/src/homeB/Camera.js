@@ -143,6 +143,12 @@ class Camera extends React.Component {
               <Button style={{backgroundColor:"#574EE0", borderColor:"#574EE0"}} onClick={this.capturePicture}>Capture</Button>{' '}
               </Link>
               <Button style={{backgroundColor:"#574EE0", borderColor:"#574EE0"}} onClick={this.switchCamera}>Switch Camera</Button>{' '}
+              <br/>
+              <Link to="/SearchByText">
+                <br/>
+              <Button style={{backgroundColor:"#574EE0", borderColor:"#574EE0"}}>Search by text </Button>
+              </Link>
+
             {/* </ButtonGroup> */}
             </Col>
           </Row>
