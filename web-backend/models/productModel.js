@@ -1,9 +1,11 @@
-class product{
-    constructor(name, products){
+class product {
+    constructor(name, quantity, price, shopID) {
 
-        this.name=name;
-        this.products=products
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.shopID = shopID;
     }
 
 }
-module.exports=product
+module.exports = product
