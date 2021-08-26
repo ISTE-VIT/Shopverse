@@ -1,9 +1,10 @@
-class shop{
-    constructor(name, id){
+class shop {
+    constructor(shopname, email, phone_number) {
 
-        this.name=name;
-        this.id=id
+        this.shopname = shopname;
+        this.email = email;
+        this.phone_number = phone_number;
     }
 
 }
-module.exports=shop
+module.exports = shop

@@ -1,8 +1,10 @@
-class user{
-    constructor(name){
+class user {
+    constructor(username, email, phone_number) {
 
-        this.name=name;
+        this.username = username;
+        this.email = email;
+        this.phone_number = phone_number;
     }
 
 }
-module.exports=user
+module.exports = user

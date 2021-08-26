@@ -34,7 +34,7 @@ export default function Landing() {
                 </Jumbotron>
                 </div>
                 <div>
-                <Jumbotron style={{position:"absolute", top:"75%", left:"10%",width:"500px", textAlign:"left"}}>
+                <Jumbotron style={{position:"absolute", top:"65%", left:"10%",width:"500px", textAlign:"left"}}>
                     <h1 className="display-4" style={{color:"#F16B44"}}>Shops</h1>
                     <p className="lead">For shop owners, who wish to increase their sales and ensuring safe purchase of the products in their store.</p>
                     <hr className="my-2" />
@@ -53,15 +53,15 @@ export default function Landing() {
                 </div>
                 </Col>
             </Row>
+                <div style={{position:"absolute", right:"0%",top:"120%"}}>
+                <Image src={img3} fluid/>
+                </div>
             <Row>
-                <Col style={{position:"absolute",top:"130%", width:"1000px", left:"10%"}}>
+                <Col style={{position:"absolute",top:"130%", width:"1000px", left:"15%"}}>
                 <Jumbotron>
                         <h1 className="display-4">Who Are We</h1>
                         <p className="lead" style={{width:"40%",position:"absolute", left:"30%"}}>This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
                 </Jumbotron>
-                <div style={{position:"absolute",left:"-3.85%", right:"0%",top:"40%", width:"finally", height:"1175px", maxWidth:"fit-content"}}>
-                <Image src={img3} fluid/>
-                </div>
                 </Col>
                 <Col xs={12} md={8}>
                 <Jumbotron style={{position:"absolute", top:"230%", left:"10%",width:"800px", textAlign:"left"}}>

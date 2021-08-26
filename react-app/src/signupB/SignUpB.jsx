@@ -13,6 +13,7 @@ import { useHistory } from 'react-router-dom'
 
 var SignUpB=()=> {
     const emailRef=useRef();
+    const nameRef=useRef();
     const phoneRef=useRef();
     const passwordRef=useRef();
     const confirmRef=useRef();
@@ -70,6 +71,9 @@ var SignUpB=()=> {
                     <Form onSubmit={handleSubmit} style={{paddding:"0"}}>
                     {error && <Alert variant="danger">{error}</Alert>}
                     <Row>
+                      <Col>
+                      <Form.Control ref={nameRef} id="name" type="text" placeholder="User name" required />
+                      </Col>
                         <Col>
                         <Form.Control ref={emailRef} id="email" type="email" placeholder="Email" required/> 
                         <br/>

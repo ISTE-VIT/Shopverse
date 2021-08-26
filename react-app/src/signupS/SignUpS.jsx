@@ -14,6 +14,7 @@ import './SignUpS.css'
 var SignUpS=()=> {
 
     const emailRef=useRef();
+    const nameRef=useRef();
     const phoneRef=useRef();
     const passwordRef=useRef();
     const confirmRef=useRef();
@@ -82,6 +83,9 @@ var SignUpS=()=> {
                         </Col>
                     </Row>
                     <Row>
+                    <Col>
+                      <Form.Control ref={nameRef} id="name" type="text" placeholder="Shop Name" required />
+                      </Col>
                         <Col>
                         <Form.Control ref={passwordRef} type="password" placeholder="Password" />
                         <br/>
