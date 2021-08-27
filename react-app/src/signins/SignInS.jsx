@@ -25,7 +25,7 @@ var SignInS=()=> {
           setError("")
           setLoading(true)
           await login(emailRef.current.value, passwordRef.current.value)
-          history.push("/")
+          history.push("/Buisness_home")
         } catch {
           setError("Failed to log in")
         }
@@ -74,7 +74,7 @@ var SignInS=()=> {
                         </Col>
                     </Row>
                     <div style={{textAlign:"left"}}>
-                    <Link to ="/QR_Generation"> 
+                    <Link to ="/Buisness_home"> 
                     <Button disabled={loading} type="submit" style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Sign In</Button>
                     </Link>
                     <br/>

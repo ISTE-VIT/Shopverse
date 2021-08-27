@@ -9,6 +9,7 @@ import { useRef , useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
+import axios from 'axios'
 
 
 var SignUpB=()=> {
@@ -23,8 +24,11 @@ var SignUpB=()=> {
     let history = useHistory()
 
      let handleSubmit= async(e)=> {
+       let username=nameRef.current.value;
+       let phone_number=phoneRef.current.value;
+       let email=emailRef.current.value;
         e.preventDefault()
-    
+        
         if (passwordRef.current.value !== confirmRef.current.value) {
           return setError("Passwords do not match")
         }
@@ -36,9 +40,16 @@ var SignUpB=()=> {
           setError("")
           setLoading(true)
           await SignUp(emailRef.current.value, passwordRef.current.value)
+          await axios.post("http://localhost:8080/api/user",{
+            username:username,
+            phone_number:phone_number,
+            email:email
+          }).then((res) => {
+            console.log(res);
+        });
           history.push("/Buyer_home")
-        } catch {
-          setError("Failed to create an account")
+        } catch(error) {
+          setError(error.message)
         }
     
         setLoading(false)
