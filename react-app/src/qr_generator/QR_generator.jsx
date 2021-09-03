@@ -6,8 +6,32 @@ import { Image , Row, Col, Container, Jumbotron, Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import QR_code from 'react-qr-code'
 import "./QR_generator.css"
+import { useAuth } from '../context/AuthContext'
+import axios from 'axios'
+import cookie from 'react-cookies'
 
 export default function QR_generator() {
+    const {currentUser}=useAuth()
+    let email=currentUser.email;
+    let temp;
+    let id;
+
+    let UID=cookie.load("uid")
+    console.log(email)
+    try {    
+       id= axios.get(`http://localhost:8080/api/shopOne/${email}`).then((response)=>{
+                console.log(JSON.stringify(response.data))
+                console.log((response))
+                temp=(response.data)
+            })
+    
+        console.log(temp)
+        console.log(id)
+    } catch (error) {
+        console.log(error.message)
+    }
+
+
     return (
         <div>
                  
@@ -40,7 +64,7 @@ export default function QR_generator() {
             </Col>
             <Container>
             <Col  style={{outlineColor:"#DD5A34",position:"absolute", right:"20%", top:"35%", height:"150px", width:"150px"}}>
-            <QR_code  value="hey"/>            
+            <QR_code value={UID}/>       
             </Col>
             </Container>
             </Row>

@@ -25,7 +25,9 @@ const getAllShops = async(req, res, next) => {
             } else {
                 data.forEach(doc => {
                     const shop = new Shop(
-                        doc.data().name,
+                        doc.data().shopname,
+                        doc.data().email,
+                        doc.data().phone_number,
                         doc.id,
                     );
                     shopsArray.push(shop);
@@ -40,16 +42,23 @@ const getAllShops = async(req, res, next) => {
 
 const getShop = async(req, res, next) => {
     try {;
-        const id = req.params.id;
-        const shop = await firestore.collection('sellers').doc(id);
+        // const id = req.params.id;
+        const email = req.params.email;
+        const shop = await firestore.collection('sellers');
         const data = await shop.get();
+        data.forEach(doc=>{
+            if(doc.data().email===email)
+            {
+                res.send(doc.data().uid)
+            }
+        })
         if (!data.exists) {
             res.status(404).send('Shop with the given ID not found');
-        } else {
-            res.send(data.data());
+        } 
+        // else {
+        //     res.send(data.data());
 
-
-        }
+        // }
     } catch (error) {
         res.status(400).send(error.message);
     }

@@ -1,20 +1,38 @@
 import React from 'react'
 import { Card, Container, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import cookie from 'react-cookies'
+import { useEffect, useState } from 'react'
 
 
 export default function ProductStock() {
+    let shopID=cookie.load("uid")
+    const [data, setData] = useState([])
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/api/productList/${shopID}`).then((response)=>{
+            setData(response.data)
+        })
+    })
+    // console.log(data[1])
     return (
         <div>
             <Container>
                 <div style={{position:"absolute",top:"50%", width:"1000px",height:"240px", overflowY:"scroll", overflowX:"hidden"}}>
+                    {data.map(data=>
                     <Row>
                         <Col>
-                        <Card style={{borderColor:"#DD5A34",width:"500px", borderWidth:"1.5px"}} body>Product Name</Card>
+                        <Card style={{borderColor:"#DD5A34",width:"500px", borderWidth:"1.5px" }} body>
+                            {data.name}
+                        </Card>
                         <br/>
                         </Col>
                         <Col>
-                        <Card style={{borderColor:"#DD5A34",width:"300px",borderWidth:"1.5px"}} body>Quantity</Card>                        <br/>
+                        <Card style={{borderColor:"#DD5A34",width:"300px",borderWidth:"1.5px"}} body>
+                            {data.quantity}
+
+                        </Card>                        <br/>
                         </Col>
                         <br/>
                         <Col>
@@ -24,7 +42,8 @@ export default function ProductStock() {
                         </Col>
                         <br/>
                     </Row>
-                    <Row>
+                        )}
+                    {/* <Row>
                         <Col >
                         <Card style={{borderColor:"#DD5A34",width:"500px", borderWidth:"1.5px"}} body>Product Name</Card>
                         <br/>
@@ -86,7 +105,7 @@ export default function ProductStock() {
                         <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"60%"}}>Update</Button>                        <br/>
                         </Link>                        </Col>
                         <br/>
-                    </Row>
+                    </Row> */}
                 </div>
                 <Row>
                 <Col style={{position:"absolute",top:"250px"}}>

@@ -43,7 +43,7 @@ const getAllProductsList = async(req, res, next) => {
 const getProductsList = async(req, res, next) => {
     try {
         const product = await firestore.collection('products');
-        const ID = req.params.id
+        const ID = req.params.shopID
         const data = await product.get();
         const productsArray = [];
         if (data.empty) {
@@ -76,7 +76,7 @@ const getOneProduct = async(req, res, next) => {
         const data = await product.get()
         data.forEach(doc => {
             if (doc.data().shopID === ID && doc.data().name === name) {
-                res.send(doc.data())
+                 res.send(doc.data())
             }
         })
     } catch (error) {

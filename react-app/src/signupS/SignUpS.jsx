@@ -10,6 +10,7 @@ import { useRef , useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import './SignUpS.css'
 import axios from 'axios'
+import cookie from 'react-cookies'
 
 
 var SignUpS=()=> {
@@ -23,6 +24,7 @@ var SignUpS=()=> {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     let history = useHistory()
+    let uid
 
      let handleSubmit= async(e)=> {
         e.preventDefault()
@@ -40,17 +42,23 @@ var SignUpS=()=> {
         try {
           setError("")
           setLoading(true)
-          await SignUp(emailRef.current.value, passwordRef.current.value)
+          await SignUp(emailRef.current.value, passwordRef.current.value).then((response)=>{
+            uid=response.user.uid
+            cookie.save("uid",uid,{ path: "/" });
+            console.log(response.user.uid)
+          })
           await axios.post("http://localhost:8080/api/shop",{
             shopname:shopname,
             phone_number:phone_number,
-            email:email
+            email:email,
+            uid:uid
+
           }).then((res) => {
             console.log(res);
         });
           history.push("/thankYouS")
-        } catch {
-          setError("Failed to create an account")
+        } catch(error) {
+          setError(error.message)
         }
     
         setLoading(false)

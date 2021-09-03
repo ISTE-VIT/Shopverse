@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post('/shop', addShop)
 router.get('/shopsAll', getAllShops)
-router.get('/shopOne/:id', getShop)
+router.get('/shopOne/:email', getShop)
 
 
 module.exports = {

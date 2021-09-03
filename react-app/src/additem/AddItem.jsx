@@ -8,19 +8,43 @@ import {Image,  Row, Col, Container,  Alert} from 'react-bootstrap'
 import { useHistory, Link } from 'react-router-dom'
 import FeatherIcon from 'feather-icons-react'
 import { useAuth } from '../context/AuthContext'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Form, Button } from 'react-bootstrap'
-// import Webcam from "react-webcam";
-// import Camera from 'react-html5-camera-photo';
 import Camera from './Camera'
+import axios from 'axios'
+import cookie from 'react-cookies'
 
 
 
 export default function AddItem() {
     const { logout } = useAuth()
     const history = useHistory()
-    const [error, setError] = useState("")
+    const [error, setError] = useState('')
+    const [message, setMessage] = useState("")
+    const pnameRef= useRef()
+    const quantityRef= useRef()
+    const priceRef= useRef()
+    
+    let handleSubmit=async()=>{
+        let pname=pnameRef.current.value
+        let quantity=quantityRef.current.value
+        let price=priceRef.current.value
+        let shopID=cookie.load("uid")
+        try {
+            await axios.post("http://localhost:8080/api/products",{
+            name:pname,
+            quantity:quantity,
+            price:price,
+            shopID:shopID
+            }).then((res) => {
+                console.log(res);
+                setMessage("Product Succesfully added!")
+            })
+        } catch (error) {
+            console.log(error.message)
+        }
 
+    }
 
     async function handleLogout() {
         setError("")
@@ -32,14 +56,9 @@ export default function AddItem() {
           setError("Failed to log out")
         }
       }
-    //   function handleTakePhoto (dataUri) {
-    //     // Do stuff with the photo...
-    //     console.log('takePhoto');
-    //   }
     return (
         <div>
             <Container>
-            {error && <Alert variant="danger">{error}</Alert>}
             <Row>
                 <Col>        
                     <div  style={{position:"absolute", width:"150px", height:"10px",left:"5%"}}>
@@ -71,34 +90,30 @@ export default function AddItem() {
                     <h1 className="display-4" style={{color:"#F16B44"}}>
                         Add an Item
                     </h1>
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
+                    {error && <Alert variant="danger">{error}</Alert>}
+                    {message && <Alert variant="success">{message}</Alert>}
                     <br />
-                    <Form.Control style={{borderColor:"#DD5A34",  borderWidth:"1.5px"}} type="text" placeholder="Product name" />
+                    <Form.Control ref={pnameRef} style={{borderColor:"#DD5A34",  borderWidth:"1.5px"}} type="text" placeholder="Product name" />
                     <br />
                     <Row>
                         <Col>
-                            <Form.Control style={{borderColor:"#DD5A34",borderWidth:"1.5px"}} type="text" placeholder="Product Cost" />
+                            <Form.Control ref={priceRef} style={{borderColor:"#DD5A34",borderWidth:"1.5px"}} type="text" placeholder="Product Cost" />
                             <br /></Col>
                         <Col>
-                    <Form.Control style={{borderColor:"#DD5A34", borderWidth:"1.5px"}}  type="text" placeholder="Stock" />
+                    <Form.Control ref={quantityRef} style={{borderColor:"#DD5A34", borderWidth:"1.5px"}}  type="text" placeholder="Stock" />
                     <br />
                     </Col>
                     </Row>
                     </Form>
                     <div className="d-grid gap-2">
-                    <Button style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Add Item</Button>
+                    <Button onClick={handleSubmit} style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}type="submit">Add Item</Button>
                     </div>
 
                 </div>
                 </Col>
                 <Col>
-                <div 
-                // style={{height:"200px", width:"200px"}}
-                >
-                {/* <Webcam/> */}
-                {/* <Camera
-                onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
-                /> */}
+                <div>
                 <Camera/>
                 </div>
                 </Col>
