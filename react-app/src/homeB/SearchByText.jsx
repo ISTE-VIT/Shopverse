@@ -3,17 +3,46 @@ import img1 from  "./images/Group 164.svg"
 import img2 from  "./images/Group 163.svg"
 import img3 from "./images/LOGO.svg"
 import img4 from "./images/bx_bx-qr.svg"
-import {Image, Row, Col, Container, Alert, Button, Card, Form, InputGroup} from 'react-bootstrap'
+import {Image, Row, Col, Container, Alert,  Form, InputGroup } from 'react-bootstrap'
 import FeatherIcon from 'feather-icons-react'
 import {useAuth} from '../context/AuthContext'
 import { useHistory, Link } from "react-router-dom"
 import { useState } from 'react'
 import ProductCard from './ProductCard';
+import axios from 'axios'
+import cookie from 'react-cookies'
+import { useEffect } from 'react'
+
+// const Array=()=>{
+//     const [data, setData] = useState([])
+//     let shopID=cookie.load("shopID")
+//     let index=0
+//     useEffect(()=>{
+//         axios.get(`http://localhost:8080/api/productList/${shopID}`).then((response)=>{
+//             setData(response.data)
+//         })
+//     },[shopID])
+//     console.log(data.name)
+//     for(index=0;index<data.length;index=index+1)
+//     {
+//         return(index, data)
+//     }
+// }
 
 const SearchByText = () => {
     const { logout } = useAuth()
     const history = useHistory()
     const [error, setError] = useState("")
+    const [data, setData] = useState([])
+    let shopID=cookie.load("shopID")
+
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/api/productList/${shopID}`).then((response)=>{
+            setData(response.data)
+        })
+    },[shopID])
+    console.log(data.name)
 
     async function handleLogout() {
         setError("")
@@ -63,8 +92,11 @@ const SearchByText = () => {
                 </div>
                 </Col>
         </Row>
-        <div style={{position:"absolute", top:"20%", width:"90%", height:"450px", overflowY:"scroll"}}>
+        {data.map(data=>
+        <div style={{position:"absolute", top:"20%", width:"90%", height:"450px", overflowY:"scroll", overflowX:"hidden"}}>
         <Row>
+            {/* {cookie.save("name",data.name, {path:"/"})}
+            {cookie.save("price",data.price, {path:"/"})} */}
             <Col><ProductCard/></Col>
             <Col><ProductCard/></Col>
             <Col><ProductCard/></Col>
@@ -77,6 +109,7 @@ const SearchByText = () => {
             <Col><ProductCard/></Col>
         </Row>
         </div>
+        )}
         </Container>
 
         <div style={{position:"absolute", width:"144px", height:"144px", right:"0%", top:"0"}}>
@@ -93,4 +126,6 @@ const SearchByText = () => {
     );
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default SearchByText;
+

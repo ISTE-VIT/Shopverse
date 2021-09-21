@@ -9,6 +9,7 @@ import { useRef , useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
+import cookie from 'react-cookies'
 import axios from 'axios'
 
 
@@ -22,6 +23,7 @@ var SignUpB=()=> {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     let history = useHistory()
+    let uid
 
      let handleSubmit= async(e)=> {
        let username=nameRef.current.value;
@@ -39,11 +41,16 @@ var SignUpB=()=> {
         try {
           setError("")
           setLoading(true)
-          await SignUp(emailRef.current.value, passwordRef.current.value)
+          await SignUp(emailRef.current.value, passwordRef.current.value).then((response)=>{
+            uid=response.user.uid
+            cookie.save("uid",uid,{ path: "/" });
+            console.log(response.user.uid)
+          })
           await axios.post("http://localhost:8080/api/user",{
             username:username,
             phone_number:phone_number,
-            email:email
+            email:email,
+            uid:uid
           }).then((res) => {
             console.log(res);
         });

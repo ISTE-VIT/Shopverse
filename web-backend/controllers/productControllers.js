@@ -84,12 +84,21 @@ const getOneProduct = async(req, res, next) => {
     }
 }
 
-const updateProductStock = async(req, res, next) => {
+const updateProduct = async(req, res, next) => {
     try {
-        const ID = req.params.id;
+        const shopID = req.params.shopID;
+        const name = req.params.name;
         const newdata = req.body
-        const product = await firestore.collection('products').doc(ID);
-        await product.update(newdata)
+        let docID
+        const product = await firestore.collection('products');
+        const data = await product.get()
+        data.forEach(doc => {
+            if (doc.data().shopID === shopID && doc.data().name === name) {
+                docID=doc.id
+                let productUpdate=firestore.collection('products').doc(docID)
+                productUpdate.update(newdata)
+            }
+        })
         res.send('Product Stock Updated Successfully');
 
     } catch (error) {
@@ -112,6 +121,6 @@ module.exports = {
     getAllProductsList,
     getProductsList,
     getOneProduct,
-    updateProductStock,
+    updateProduct,
     deleteProduct
 }

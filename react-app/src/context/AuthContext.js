@@ -16,7 +16,7 @@ export function AuthProvider({children}) {
         return auth.createUserWithEmailAndPassword(email, password)
     }
 
-    function login(email, password) {
+    function Login(email, password) {
         return auth.signInWithEmailAndPassword(email, password)
     }
 
@@ -29,14 +29,13 @@ export function AuthProvider({children}) {
           setCurrentUser(user)
           setLoading(false)
         })
-    
         return unsubscribe
       }, [])
 
     const value={
         currentUser,
         SignUp, 
-        login,
+        Login,
         logout
     }
     return (

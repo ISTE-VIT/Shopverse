@@ -8,12 +8,15 @@ import { Jumbotron, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext'
 import { useState, useRef } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+// import axios from 'axios'
+import cookie from 'react-cookies'
 
 
-var SignInS=()=> {
-    const emailRef = useRef()
-    const passwordRef = useRef()
-    const {login}=useAuth()
+export default function SignInS() {
+    const emailRef1 = useRef()
+    const passwordRef1 = useRef()
+    let uid
+    const {Login}=useAuth()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false) 
     const history =useHistory()
@@ -24,15 +27,22 @@ var SignInS=()=> {
         try {
           setError("")
           setLoading(true)
-          await login(emailRef.current.value, passwordRef.current.value)
+          await Login(emailRef1.current.value, passwordRef1.current.value).then((response)=>{
+              console.log(response.user.uid)
+              uid=response.user.uid
+              cookie.save('uid',response.user.uid,{ path: "/" })
+              console.log(uid)
+          })
           history.push("/Buisness_home")
         } catch {
           setError("Failed to log in")
         }
-    
-        setLoading(false)
-      }
 
+        
+        setLoading(false)
+    }
+    const currentUser=useAuth()
+    console.log(currentUser)
 
     return (
         <div>     
@@ -63,19 +73,19 @@ var SignInS=()=> {
 
                     <Row>
                         <Col>
-                        <Form.Control ref={emailRef} id="email" type="email" placeholder="Email" required/> 
+                        <Form.Control ref={emailRef1} id="email" type="email" placeholder="Email" required/> 
                         <br/>
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                        <Form.Control ref={passwordRef} type="password" placeholder="Password" />
+                        <Form.Control ref={passwordRef1} type="password" placeholder="Password" />
                         <br/>
                         </Col>
                     </Row>
                     <div style={{textAlign:"left"}}>
                     <Link to ="/Buisness_home"> 
-                    <Button disabled={loading} type="submit" style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Sign In</Button>
+                    <Button disabled={loading} onClick={handleSubmit}  type="submit" style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Sign In</Button>
                     </Link>
                     <br/>
                     <br/>
@@ -89,6 +99,3 @@ var SignInS=()=> {
         </div>
     )
 }
-
-export default SignInS
-

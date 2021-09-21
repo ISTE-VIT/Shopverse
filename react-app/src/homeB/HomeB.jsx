@@ -28,6 +28,15 @@ function HomeB() {
       }
     return (
         <div>
+            <div style={{position:"absolute", width:"144px", height:"144px", right:"0", top:"0"}}>
+            <Image src={img1} fluid/>
+            </div>
+            <div style={{position:"absolute", bottom:"0",width:"200px",  left:"0"}}>
+            <Image src={img2} fluid/>
+            </div>        
+                <div  onClick={handleLogout} style={{position:"absolute",width:"50px", height:"50px",color:"white", top:"3%",right:"3%"}}>
+                    <FeatherIcon  icon="log-out"/>
+                </div>     
             <Container>
             {error && <Alert variant="danger">{error}</Alert>}
             <Row>
@@ -39,13 +48,13 @@ function HomeB() {
                 </div> 
                 </Col>
                 <Col>
-                        <div style={{ position: "absolute", left: "37.5%", top:"15%" }}>
+                <div style={{ position: "absolute", left: "37.5%", top:"10%" , width:"200px", height:"200px"}}>
                 <Test/>
                 </div>
                 </Col>
             </Row>
             <Row>
-                <Col style={{position:"absolute", top:"80%", textAlign:"center", left:"1%"}}>
+                <Col style={{position:"absolute", top:"80%", textAlign:"center", left:"35%", width:"500px"}}>
                     <Link to="/SearchByImage">
                     <Button style={{backgroundColor:"#574EE0", borderColor:"#574EE0"}}>
                         Search by image
@@ -59,15 +68,6 @@ function HomeB() {
                 </Col>
             </Row>
             </Container>
-            <div style={{position:"absolute", width:"144px", height:"144px", right:"0%", top:"0"}}>
-            <Image src={img1} fluid/>
-            </div>
-            <div style={{position:"absolute", bottom:"0",width:"200px",  left:"0%"}}>
-            <Image src={img2} fluid/>
-            </div>        
-                <div  onClick={handleLogout} style={{position:"absolute",width:"50px", height:"50px",color:"white", top:"3%",right:"3%"}}>
-                    <FeatherIcon  icon="log-out"/>
-                </div>            
         </div>
     )
 }

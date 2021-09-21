@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import QrReader from 'react-qr-reader'
+import cookie from 'react-cookies'
  
 class Test extends Component {
   state = {
@@ -8,6 +9,8 @@ class Test extends Component {
  
   handleScan = data => {
     if (data) {
+      cookie.save("shopID", data,{ path: "/" })
+      console.log(data)
       this.setState({
         result: data
       })
@@ -25,7 +28,7 @@ class Test extends Component {
           onScan={this.handleScan}
           style={{ width: '400px' }}
         />
-        <p>{this.state.result}</p>
+        {/* <p>{this.state.result}</p> */}
       </div>
     )
   }

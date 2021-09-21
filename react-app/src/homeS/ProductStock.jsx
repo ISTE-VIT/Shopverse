@@ -13,7 +13,7 @@ export default function ProductStock() {
     useEffect(()=>{
         axios.get(`http://localhost:8080/api/productList/${shopID}`).then((response)=>{
             setData(response.data)
-        })
+        },[])
     })
     // console.log(data[1])
     return (
@@ -37,75 +37,14 @@ export default function ProductStock() {
                         <br/>
                         <Col>
                         <Link to ="/Update_Item">
-                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"60%"}}>Update</Button>                        <br/>
+                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"60%"}} onClick={()=>{
+                            cookie.save("currentProduct",data.name, {path:'/'})
+                        }} >Update</Button>                        <br/>
                         </Link>
                         </Col>
                         <br/>
                     </Row>
                         )}
-                    {/* <Row>
-                        <Col >
-                        <Card style={{borderColor:"#DD5A34",width:"500px", borderWidth:"1.5px"}} body>Product Name</Card>
-                        <br/>
-                        </Col>
-                        <Col>
-                        <Card style={{borderColor:"#DD5A34",width:"300px",borderWidth:"1.5px"}} body>Quantity</Card>                        <br/>
-                        </Col>
-                        <br/>
-                        <Col>
-                        <Link to ="/Update_Item">
-                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"60%"}}>Update</Button>                        <br/>
-                        </Link>
-                        </Col>
-                        <br/>
-                    </Row>
-                    <Row>
-                        <Col>
-                        <Card style={{borderColor:"#DD5A34",width:"500px", borderWidth:"1.5px"}} body>Product Name</Card>
-                        <br/>
-                        </Col>
-                        <Col >
-                        <Card style={{borderColor:"#DD5A34",width:"300px",borderWidth:"1.5px"}} body>Quantity</Card>                        <br/>
-                        </Col>
-                        <br/>
-                        <Col>
-                        <Link to ="/Update_Item">
-                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"60%"}}>Update</Button>                        <br/>
-                        </Link>
-                        </Col>
-                        <br/>
-                    </Row>
-                    <Row>
-                        <Col>
-                        <Card style={{borderColor:"#DD5A34",width:"500px", borderWidth:"1.5px"}} body>Product Name</Card>
-                        <br/>
-                        </Col>
-                        <Col>
-                        <Card style={{borderColor:"#DD5A34",width:"300px",borderWidth:"1.5px"}} body>Quantity</Card>                        <br/>
-                        </Col>
-                        <br/>
-                        <Col>
-                        <Link to ="/Update_Item">
-                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"60%"}}>Update</Button>                        <br/>
-                        </Link>                        </Col>
-                        <br/>
-                    </Row>
-                    <Row>
-                        <Col>
-                        <Card style={{borderColor:"#DD5A34",width:"500px", borderWidth:"1.5px"}} body>Product Name</Card>
-                        <br/>
-                        </Col>
-                        <Col>
-                        <Card style={{borderColor:"#DD5A34",width:"300px",borderWidth:"1.5px"}} body>Quantity</Card>
-                        <br/>
-                        </Col>
-                        <br/>
-                        <Col>
-                        <Link to ="/Update_Item">
-                        <Button size="lg"style={{backgroundColor:"#DD5A34",borderRadius:"10px", borderColor:"#DD5A34",top:"60%"}}>Update</Button>                        <br/>
-                        </Link>                        </Col>
-                        <br/>
-                    </Row> */}
                 </div>
                 <Row>
                 <Col style={{position:"absolute",top:"250px"}}>

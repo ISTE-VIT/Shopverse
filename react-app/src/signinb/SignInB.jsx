@@ -13,7 +13,7 @@ import { Link, useHistory } from 'react-router-dom'
 export default function SignInB() {  
     const emailRef = useRef()
     const passwordRef = useRef()
-    const {login}=useAuth()
+    const {Login}=useAuth()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false) 
     const history =useHistory()
@@ -26,14 +26,16 @@ export default function SignInB() {
         try {
           setError("")
           setLoading(true)
-          await login(emailRef.current.value, passwordRef.current.value)
+          await Login(emailRef.current.value, passwordRef.current.value)
           history.push("/Buyer_home")
         } catch {
           setError("Failed to log in")
         }
-    
+        
         setLoading(false)
-      }
+    }
+    const currentUser=useAuth()
+    console.log(currentUser)
 
     return (
         <div>     

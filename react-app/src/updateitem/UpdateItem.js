@@ -8,19 +8,52 @@ import {Image,  Row, Col, Container,  Alert} from 'react-bootstrap'
 import { useHistory, Link } from 'react-router-dom'
 import FeatherIcon from 'feather-icons-react'
 import { useAuth } from '../context/AuthContext'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
-// import Webcam from "react-webcam";
-// import Camera from 'react-html5-camera-photo';
 import Camera from './Camera'
-
-
+import axios from 'axios'
+import cookie from 'react-cookies'
+import { useRef } from 'react'
 
 export default function UpdateItem() {
     const { logout } = useAuth()
     const history = useHistory()
     const [error, setError] = useState("")
+    let currentName=cookie.load("currentProduct")
+    let uid=cookie.load("uid")
+    const pnameRef= useRef()
+    const quantityRef= useRef()
+    const priceRef= useRef()
+    const [pname, setPname] = useState(currentName)
+    const [price,setPrice]=useState("0")
+    const [quantity,setQuantity]=useState("0")
+    const [message, setMessage] = useState("")
+    
+    console.log(currentName)
+    console.log(uid)
+    
+    
+    let update=useEffect(()=>{
+        let shopID=uid
+        setPname(pnameRef.current.value)
+        setQuantity(quantityRef.current.value)
+        setPrice(priceRef.current.value)
 
+        try {
+            axios.put(`http://localhost:8080/api/updateProduct/${uid}/${currentName}`,{
+                name:pname,
+                quantity:quantity,
+                price:price,
+                shopID:shopID
+                }).then((res) => {
+                        console.log(res);
+                        setMessage("Product Updated added!")
+                })
+            
+        } catch (error) {
+            console.log(error.message)
+        }
+    }, [])
 
     async function handleLogout() {
         setError("")
@@ -32,10 +65,6 @@ export default function UpdateItem() {
           setError("Failed to log out")
         }
       }
-    //   function handleTakePhoto (dataUri) {
-    //     // Do stuff with the photo...
-    //     console.log('takePhoto');
-    //   }
     return (
         <div>
             <Container>
@@ -69,22 +98,24 @@ export default function UpdateItem() {
                     <h1 className="display-4" style={{color:"#F16B44"}}>
                         Update Item
                     </h1>
-                    <Form>
+                    <Form onSubmit={update}>
+                    {error && <Alert variant="danger">{error}</Alert>}
+                    {message && <Alert variant="success">{message}</Alert>}
                     <br />
-                    <Form.Control style={{borderColor:"#DD5A34",  borderWidth:"1.5px"}} type="text" placeholder="Product name" />
+                    <Form.Control ref={pnameRef} style={{borderColor:"#DD5A34",  borderWidth:"1.5px"}} type="text" placeholder="Product name" />
                     <br />
                     <Row>
                         <Col>
-                            <Form.Control style={{borderColor:"#DD5A34",borderWidth:"1.5px"}} type="text" placeholder="Product Cost" />
+                            <Form.Control ref={priceRef} style={{borderColor:"#DD5A34",borderWidth:"1.5px"}} type="text" placeholder="Product Cost" />
                             <br /></Col>
                         <Col>
-                    <Form.Control style={{borderColor:"#DD5A34", borderWidth:"1.5px"}}  type="text" placeholder="Stock" />
+                    <Form.Control ref={quantityRef} style={{borderColor:"#DD5A34", borderWidth:"1.5px"}}  type="text" placeholder="Stock" />
                     <br />
                     </Col>
                     </Row>
                     </Form>
                     <div className="d-grid gap-2">
-                    <Button style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Update Item</Button>
+                    <Button type="submit" style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Update Item</Button>
                     </div>
 
                 </div>
