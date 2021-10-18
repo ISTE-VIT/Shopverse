@@ -53,14 +53,15 @@ const getShop = async(req, res, next) => {
             }
         })
         if (!data.exists) {
-            res.status(404).send('Shop with the given ID not found');
+            return(res.status(404).send('Shop with the given ID not found'))
+            
         } 
         // else {
         //     res.send(data.data());
 
         // }
     } catch (error) {
-        res.status(400).send(error.message);
+       return( res.status(400).send(error.message))
     }
 }
 

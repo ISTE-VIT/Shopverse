@@ -8,13 +8,25 @@ import {Image,  Row, Col, Container,  Alert, Card, Button} from 'react-bootstrap
 import FeatherIcon from 'feather-icons-react'
 import { useAuth } from '../context/AuthContext'
 import { useHistory, Link } from "react-router-dom"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import cookie from 'react-cookies'
 
 
 function OrderNumber() {
     const { logout } = useAuth()
     const history = useHistory()
     const [error, setError] = useState("")
+
+    let shopID=cookie.load("uid")
+    let userID=cookie.load("userID")
+    const [data, setData] = useState([])
+
+    useEffect(()=>{
+        axios.get(`http://localhost:8080/api/ordersById/${shopID}/${userID}`).then((response)=>{
+            setData(response.data)
+        },[])
+    })
 
 
     async function handleLogout() {
@@ -27,6 +39,7 @@ function OrderNumber() {
           setError("Failed to log out")
         }
       }
+
     return (
         <div>
             <Container>
@@ -65,15 +78,16 @@ function OrderNumber() {
                 <div  onClick={handleLogout} style={{position:"absolute",width:"50px", height:"50px",color:"white", top:"3%",right:"3%"}}>
                     <FeatherIcon  icon="log-out"/>
                 </div>  
-                <Container>  
+                <Container> 
+                {data.map(data=>
                 <div style={{position:"absolute",top:"35%", width:"1000px",height:"250px", overflowY:"scroll",overflowX:"hidden", left:"12%"}}>
                     <Row>
                             <Col >
-                            <Card style={{borderColor:"#DD5A34",width:"520px", borderWidth:"1.5px", overflow:"hidden"}} body>Order Id</Card>
+                            <Card style={{borderColor:"#DD5A34",width:"520px", borderWidth:"1.5px", overflow:"hidden"}} body>{data.product}</Card>
                             <br/>
                             </Col>
                             <Col>
-                            <Card style={{borderColor:"#DD5A34",width:"200px",borderWidth:"1.5px",  overflow:"hidden"}} body>Customer Name</Card>                        <br/>
+                            <Card style={{borderColor:"#DD5A34",width:"200px",borderWidth:"1.5px",  overflow:"hidden"}} body>{data.quantity}</Card>                        <br/>
                             </Col>
                             <br/>
                             <Col>
@@ -81,7 +95,7 @@ function OrderNumber() {
                             </Col>
                             <br/>
                     </Row>
-                    <Row>
+                    {/* <Row>
                             <Col >
                             <Card style={{borderColor:"#DD5A34",width:"520px", borderWidth:"1.5px", overflow:"hidden"}} body>Order Id</Card>
                             <br/>
@@ -122,8 +136,9 @@ function OrderNumber() {
                             <Card style={{borderColor:"#DD5A34",width:"200px",borderWidth:"1.5px",  overflow:"hidden"}} body>Customer Name</Card>                        <br/>
                             </Col>
                             <br/>
-                    </Row>
+                    </Row> */}
                     </div>  
+            )} 
                     <Row>      
                     <div style={{ position:"absolute", top:"85%", width:"400px", left:"65%"}}>
                     <Button style={{}}>

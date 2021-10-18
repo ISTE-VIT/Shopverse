@@ -6,16 +6,20 @@ import cookie from 'react-cookies'
 import { useEffect, useState } from 'react'
 
 
-export default function ProductStock() {
+
+
+const  ProductStock=()=> {
     let shopID=cookie.load("uid")
     const [data, setData] = useState([])
-
+    
     useEffect(()=>{
         axios.get(`http://localhost:8080/api/productList/${shopID}`).then((response)=>{
             setData(response.data)
         },[])
     })
     // console.log(data[1])
+
+
     return (
         <div>
             <Container>
@@ -57,3 +61,5 @@ export default function ProductStock() {
         </div>
     )
 }
+
+export default ProductStock

@@ -30,7 +30,7 @@ export function AuthProvider({children}) {
           setLoading(false)
         })
         return unsubscribe
-      }, [])
+      })
 
     const value={
         currentUser,

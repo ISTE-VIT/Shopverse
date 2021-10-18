@@ -9,40 +9,29 @@ import {useAuth} from '../context/AuthContext'
 import { useHistory, Link } from "react-router-dom"
 import { useState } from 'react'
 import ProductCard from './ProductCard';
-import axios from 'axios'
-import cookie from 'react-cookies'
-import { useEffect } from 'react'
+// import axios from 'axios'
+// import cookie from 'react-cookies'
+// import { useEffect } from 'react'
 
-// const Array=()=>{
-//     const [data, setData] = useState([])
-//     let shopID=cookie.load("shopID")
-//     let index=0
-//     useEffect(()=>{
-//         axios.get(`http://localhost:8080/api/productList/${shopID}`).then((response)=>{
-//             setData(response.data)
-//         })
-//     },[shopID])
-//     console.log(data.name)
-//     for(index=0;index<data.length;index=index+1)
-//     {
-//         return(index, data)
-//     }
-// }
+
+
 
 const SearchByText = () => {
+
     const { logout } = useAuth()
     const history = useHistory()
     const [error, setError] = useState("")
-    const [data, setData] = useState([])
-    let shopID=cookie.load("shopID")
+    // const [data, setData] = useState([])
+    // let shopID=cookie.load("shopID")
+    
 
 
-    useEffect(()=>{
-        axios.get(`http://localhost:8080/api/productList/${shopID}`).then((response)=>{
-            setData(response.data)
-        })
-    },[shopID])
-    console.log(data.name)
+    // useEffect(()=>{
+    //     axios.get(`http://localhost:8080/api/productList/${shopID}`).then((response)=>{
+    //         setData(response.data)
+    //     })
+    // },[shopID])
+
 
     async function handleLogout() {
         setError("")
@@ -81,35 +70,31 @@ const SearchByText = () => {
                 <div style={{ position:"absolute",width:"300px",left:"30%", top:"3.5%"}}>
                     <Form>
                         <InputGroup>
-                        {/* <InputGroup.Prepend> */}
                         <InputGroup.Text style={{backgroundColor:"white",borderColor:"black",borderRightColor:"white"}}>
                         <FeatherIcon icon="search"/>
                         </InputGroup.Text>
-                        {/* </InputGroup.Prepend> */}
                         <Form.Control style={{borderColor:"black", borderLeftColor:"white"}} type="search" />
                         </InputGroup>
                     </Form>
                 </div>
                 </Col>
         </Row>
-        {data.map(data=>
         <div style={{position:"absolute", top:"20%", width:"90%", height:"450px", overflowY:"scroll", overflowX:"hidden"}}>
-        <Row>
-            {/* {cookie.save("name",data.name, {path:"/"})}
-            {cookie.save("price",data.price, {path:"/"})} */}
+
+            <Row xs={1} md={2} className="g-4">
+                <Col><ProductCard/></Col>
+                {/* <Col><ProductCard/></Col>
+                <Col><ProductCard/></Col>
+                <Col><ProductCard/></Col> */}
+            </Row>
+
+        {/* <Row>
             <Col><ProductCard/></Col>
             <Col><ProductCard/></Col>
             <Col><ProductCard/></Col>
             <Col><ProductCard/></Col>
-        </Row>
-        <Row>
-            <Col><ProductCard/></Col>
-            <Col><ProductCard/></Col>
-            <Col><ProductCard/></Col>
-            <Col><ProductCard/></Col>
-        </Row>
+        </Row> */}
         </div>
-        )}
         </Container>
 
         <div style={{position:"absolute", width:"144px", height:"144px", right:"0%", top:"0"}}>
@@ -122,10 +107,9 @@ const SearchByText = () => {
                 <FeatherIcon  icon="log-out"/>
             </div>            
     </div>
-
     );
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export
+
 export default SearchByText;
 

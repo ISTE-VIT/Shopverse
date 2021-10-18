@@ -27,6 +27,7 @@ const getAllProductsList = async(req, res, next) => {
                     doc.data().name,
                     doc.data().price,
                     doc.data().quantity,
+                    doc.data().image,
                     doc.data().shopID,
 
                 );
@@ -55,6 +56,7 @@ const getProductsList = async(req, res, next) => {
                         doc.data().name,
                         doc.data().price,
                         doc.data().quantity,
+                        doc.data().image,
                         doc.data().shopID,
                     );
                     productsArray.push(product);

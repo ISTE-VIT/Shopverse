@@ -3,19 +3,22 @@ import img1 from  "./images/Group 160.svg"
 import img2 from  "./images/Group 62.svg"
 import img3 from "./images/LOGO.svg"
 import img4 from "./images/bx_bx-qr.svg"
-import {Image, Form, Row, Col, Container, InputGroup, Alert} from 'react-bootstrap'
+import {Image,  Row, Col, Container,  Alert} from 'react-bootstrap'
 import FeatherIcon from 'feather-icons-react'
 import "./HomeS.css"
 import { useAuth } from '../context/AuthContext'
 import { useHistory, Link } from "react-router-dom"
 import { useState } from 'react'
 import SwitchExample from './Switch'
+// import cookie from 'react-cookies'
+// import SearchBar from './SearchBar'
 
 
 function HomeS() {
     const { logout } = useAuth()
     const history = useHistory()
     const [error, setError] = useState("")
+    // const [search, setSearch] = useState("")
 
 
     async function handleLogout() {
@@ -45,18 +48,7 @@ function HomeS() {
                     <Image src={img4} fluid/>
                     </Link>
                 </div>
-                <div style={{ position:"absolute",width:"300px",left:"25%", top:"3.5%"}}>
-                    <Form>
-                        <InputGroup>
-                        {/* <InputGroup.Prepend> */}
-                        <InputGroup.Text style={{backgroundColor:"white",borderColor:"black",borderRightColor:"white"}}>
-                        <FeatherIcon icon="search"/>
-                        </InputGroup.Text>
-                        {/* </InputGroup.Prepend> */}
-                        <Form.Control style={{borderColor:"black", borderLeftColor:"white"}} type="search" />
-                        </InputGroup>
-                    </Form>
-                </div>
+                {/* <SearchBar/> */}
                 <div style={{position:"absolute", left:"10%", top:"20%"}}>
                 <SwitchExample/>
                 </div>

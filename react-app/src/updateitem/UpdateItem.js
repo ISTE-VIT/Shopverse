@@ -8,7 +8,9 @@ import {Image,  Row, Col, Container,  Alert} from 'react-bootstrap'
 import { useHistory, Link } from 'react-router-dom'
 import FeatherIcon from 'feather-icons-react'
 import { useAuth } from '../context/AuthContext'
-import { useState, useEffect } from 'react'
+import { useState, 
+    // useEffect
+ } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import Camera from './Camera'
 import axios from 'axios'
@@ -24,36 +26,44 @@ export default function UpdateItem() {
     const pnameRef= useRef()
     const quantityRef= useRef()
     const priceRef= useRef()
-    const [pname, setPname] = useState(currentName)
-    const [price,setPrice]=useState("0")
-    const [quantity,setQuantity]=useState("0")
-    const [message, setMessage] = useState("")
+    // const [pname, setPname] = useState(currentName)
+    // const [price,setPrice]=useState(100)
+    // const [quantity,setQuantity]=useState(100)
+    let pname= currentName
+    let price
+    let quantity
+    const [message, setMessage] = useState()
     
     console.log(currentName)
     console.log(uid)
-    
-    
-    let update=useEffect(()=>{
-        let shopID=uid
-        setPname(pnameRef.current.value)
-        setQuantity(quantityRef.current.value)
-        setPrice(priceRef.current.value)
 
-        try {
-            axios.put(`http://localhost:8080/api/updateProduct/${uid}/${currentName}`,{
-                name:pname,
-                quantity:quantity,
-                price:price,
-                shopID:shopID
-                }).then((res) => {
-                        console.log(res);
-                        setMessage("Product Updated added!")
-                })
-            
-        } catch (error) {
-            console.log(error.message)
-        }
-    }, [])
+    const update=()=>{
+        // useEffect(()=>{
+            let shopID=uid
+            // setPname(pnameRef.current.value)
+            // setQuantity(quantityRef.current.value)
+            // setPrice(priceRef.current.value)
+            pname=pnameRef.current.value
+            price=priceRef.current.value
+            quantity=quantityRef.current.value
+    
+            try {
+                axios.put(`http://localhost:8080/api/updateProduct/${uid}/${currentName}`,{
+                    name:pname,
+                    quantity:quantity,
+                    price:price,
+                    shopID:shopID
+                    }).then((res) => {
+                            console.log(res);
+                            setMessage("Product Updated !")
+                    })
+                
+            } catch (error) {
+                console.log(error.message)
+            }
+        // }, [currentName, pname, price, quantity, uid])
+    }
+   
 
     async function handleLogout() {
         setError("")
@@ -115,7 +125,7 @@ export default function UpdateItem() {
                     </Row>
                     </Form>
                     <div className="d-grid gap-2">
-                    <Button type="submit" style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Update Item</Button>
+                    <Button type="submit" onClick={update} style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}>Update Item</Button>
                     </div>
 
                 </div>

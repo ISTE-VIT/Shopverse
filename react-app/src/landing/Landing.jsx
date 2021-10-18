@@ -2,6 +2,7 @@ import React from 'react'
 import{ Row,Col,Container} from 'react-bootstrap'
 import { Image } from 'react-bootstrap'
 import { Jumbotron, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 import './Landing.scss';
 import img1 from './images/Group 6.svg'
 import img2 from './images/LOGO.svg'
@@ -9,7 +10,6 @@ import img3 from './images/Group 101.svg'
 import img4 from './images/image 3.svg'
 import img5 from './images/Group 77.svg'
 import FeatherIcons from 'feather-icons-react'
-import { Link } from 'react-router-dom';
 
 export default function Landing() {
     return (
@@ -39,7 +39,7 @@ export default function Landing() {
                     <p className="lead">For shop owners, who wish to increase their sales and ensuring safe purchase of the products in their store.</p>
                     <hr className="my-2" />
                     <p className="lead">
-                    <Link to="/signUpS">
+                    <Link to="/signInS">
                     <Button style={{backgroundColor:"#F16B44", borderColor:"#F16B44"}}>Get Started</Button>
                     </Link>
                     </p>
@@ -65,14 +65,23 @@ export default function Landing() {
                 </Col>
                 <Col xs={12} md={8}>
                 <Jumbotron style={{position:"absolute", top:"230%", left:"10%",width:"800px", textAlign:"left"}}>
-                    <h1 className="display-4" >Hello, world!</h1>
-                    <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <h1 className="display-4" >About Us</h1>
+                    <p className="lead">Indian Society for Technical Education or ISTE is a national, professional, non-profit making Society registered under the Societies Registration Act of 1860. The major objective of ISTE is to assist and contribute to the production and development of top-quality professional engineers and technicians required by industries and other organizations.</p>
                     <br/>
-                    <FeatherIcons icon="instagram"/>{'  '}
-                    <FeatherIcons icon="facebook" />{'   '}
-                    <FeatherIcons icon="linkedin"/>{'   '}
-                    <FeatherIcons icon="twitter" />{'   '}
                 </Jumbotron>
+                </Col>
+                <Col>
+                <div style={{position:"absolute", top:"270%",left:"10%"}}>
+                    <Link to="https://www.instagram.com/iste_vit_vellore/?igshid=12xhs1luslzk0">
+                    <FeatherIcons icon="instagram"/>{'  '}                        
+                    </Link>
+                    <Link to="https://www.facebook.com/ISTE.VIT/ ">
+                    <FeatherIcons icon="facebook" />{'   '}
+                    </Link>
+                    <Link to="https://in.linkedin.com/company/indian-society-for-technical-education">
+                    <FeatherIcons icon="linkedin"/>{'   '}
+                    </Link>
+                </div>
                 </Col>
                 <Col xs={6} md={4}>
                     <div style={{position:"absolute", top:"230%",left:"75%"}}>

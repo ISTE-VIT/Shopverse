@@ -1,5 +1,7 @@
 import React from "react";
 import { Image, Row, Col, Container, Button } from "react-bootstrap";
+// import cookie from 'react-cookies'
+// import { useState } from "react";
 
 class Camera extends React.Component {
   constructor() {
@@ -58,6 +60,7 @@ class Camera extends React.Component {
     }
   };
 
+  
   capturePicture = () => {
     var canvas = document.createElement("canvas");
     canvas.width = this.player.videoWidth;
@@ -69,7 +72,15 @@ class Camera extends React.Component {
     });
 
     console.log(canvas.toDataURL());
-    this.setState({ imageDataURL: canvas.toDataURL() });
+    var image1=canvas.toDataURL()
+    localStorage.setItem("imageURL",image1)
+    console.log(image1)
+    // console.log(localStorage.getItem("imageURL"))
+    this.setState({ imageDataURL: canvas.toDataURL() })
+    // console.log(this.state.imageDataURL)
+    // cookie.save('imageURL',image1,{path:'/'})
+    // var img=(cookie.load('imageURL'))
+    // console.log(img)
   };
 
   switchCamera = async () => {
@@ -114,12 +125,10 @@ class Camera extends React.Component {
       <Container>
         <Row>
           <Col>
-           <Image  style={{position:"absolute", top:"15%", left:"60%", width:"30%",height:"50%"}} src={this.state.imageDataURL} alt="cameraPic"rounded fluid/>
+           <Image style={{position:"absolute", top:"15%", left:"60%", width:"30%",height:"50%"}} src={this.state.imageDataURL} alt="cameraPic"rounded fluid/>
           </Col>
         </Row>
       </Container>
-
-
     ) : (
       <video width="50%" height="50%" style={{position:"absolute", top:"15%", left:"50%"}}
         ref={(refrence) => {
@@ -138,6 +147,7 @@ class Camera extends React.Component {
             {/* <ButtonGroup aria-label="Basic example" style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}}> */}
               <Button style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}} onClick={this.initializeMedia}>Open Camera</Button>{' '}
               <Button style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}} onClick={this.capturePicture}>Capture</Button>{' '}
+              {/* {(this.capturePicture)} */}
               <Button style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}} onClick={this.switchCamera}>Switch Camera</Button>{' '}
             {/* </ButtonGroup> */}
             </Col>

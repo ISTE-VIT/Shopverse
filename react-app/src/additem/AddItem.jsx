@@ -24,17 +24,29 @@ export default function AddItem() {
     const pnameRef= useRef()
     const quantityRef= useRef()
     const priceRef= useRef()
+    // const [imgURL,setImgURL]=useState(" ")
+
+    
     
     let handleSubmit=async()=>{
+        let imageURL = localStorage.getItem('imageURL') 
+        // localStorage.getItem("imageURL")
+        // setImgURL(localStorage.getItem("imageURL"))
+        // console.log(imgURL)
         let pname=pnameRef.current.value
         let quantity=quantityRef.current.value
         let price=priceRef.current.value
         let shopID=cookie.load("uid")
+        // this.setState({ user, rememberMe });
+        // let imageURL=localStorage.getItem("imageURL")
+        console.log(localStorage.getItem("imageURL"))
+        console.log(imageURL)
         try {
             await axios.post("http://localhost:8080/api/products",{
             name:pname,
             quantity:quantity,
             price:price,
+            image:imageURL,
             shopID:shopID
             }).then((res) => {
                 console.log(res);

@@ -2,7 +2,7 @@ const firebase = require("firebase/app");
 require("firebase/firestore");
 
 const admin = require("firebase-admin");
-const serviceAccount = require("C:\\Users\\91897\\OneDrive\\Desktop\\temp-project-2644e-firebase-adminsdk-hoo35-4ec0f95f7e.json");
+const serviceAccount = require("C:\\Users\\91897\\OneDrive\\Desktop\\test-project-3567e-firebase-adminsdk-i281q-30550bee4b");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
@@ -19,13 +19,13 @@ const firebaseConfig = {
     // messagingSenderId: "31825922031",
     // appId: "1:31825922031:web:0a59d3d9947d12c778181a",
     // measurementId: "G-CZ9SWHSFCR"
-    apiKey: "AIzaSyAA6md01TqJer3m1Wj35TH-ey2wc9icV74",
-    authDomain: "temp-project-2644e.firebaseapp.com",
-    projectId: "temp-project-2644e",
-    storageBucket: "temp-project-2644e.appspot.com",
-    messagingSenderId: "781753125043",
-    appId: "1:781753125043:web:38222def304b801bcf08c6",
-    measurementId: "G-Z95Y6C4GLZ"
+    apiKey: "AIzaSyB0wI74-Xji2SbWZJ8dKt21h9zlcODS_DE",
+    authDomain: "test-project-3567e.firebaseapp.com",
+    projectId: "test-project-3567e",
+    storageBucket: "test-project-3567e.appspot.com",
+    messagingSenderId: "1040392244166",
+    appId: "1:1040392244166:web:f42226e22b73dff46600c7",
+    measurementId: "G-4LWKYRZP86"
 };
 const app = admin.firestore()
 
