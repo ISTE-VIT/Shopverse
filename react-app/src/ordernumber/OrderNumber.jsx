@@ -27,6 +27,9 @@ function OrderNumber() {
             setData(response.data)
         },[])
     })
+    const readOrder=useEffect(()=>{
+        axios.delete(`http://localhost:8080/api/deleteOrder/${shopID}/${userID}`)
+    })
 
 
     async function handleLogout() {
@@ -95,53 +98,13 @@ function OrderNumber() {
                             </Col>
                             <br/>
                     </Row>
-                    {/* <Row>
-                            <Col >
-                            <Card style={{borderColor:"#DD5A34",width:"520px", borderWidth:"1.5px", overflow:"hidden"}} body>Order Id</Card>
-                            <br/>
-                            </Col>
-                            <Col>
-                            <Card style={{borderColor:"#DD5A34",width:"200px",borderWidth:"1.5px",  overflow:"hidden"}} body>Customer Name</Card>                        <br/>
-                            </Col>
-                            <br/>
-                            <Col>
-                            <Card style={{borderColor:"#DD5A34",width:"200px",borderWidth:"1.5px",  overflow:"hidden"}} body>Customer Name</Card>                        <br/>
-                            </Col>
-                            <br/>
-                    </Row>
-                    <Row>
-                            <Col >
-                            <Card style={{borderColor:"#DD5A34",width:"520px", borderWidth:"1.5px", overflow:"hidden"}} body>Order Id</Card>
-                            <br/>
-                            </Col>
-                            <Col>
-                            <Card style={{borderColor:"#DD5A34",width:"200px",borderWidth:"1.5px",  overflow:"hidden"}} body>Customer Name</Card>                        <br/>
-                            </Col>
-                            <br/>
-                            <Col>
-                            <Card style={{borderColor:"#DD5A34",width:"200px",borderWidth:"1.5px",  overflow:"hidden"}} body>Customer Name</Card>                        <br/>
-                            </Col>
-                            <br/>
-                    </Row>
-                    <Row>
-                            <Col >
-                            <Card style={{borderColor:"#DD5A34",width:"520px", borderWidth:"1.5px", overflow:"hidden"}} body>Order Id</Card>
-                            <br/>
-                            </Col>
-                            <Col>
-                            <Card style={{borderColor:"#DD5A34",width:"200px",borderWidth:"1.5px",  overflow:"hidden"}} body>Customer Name</Card>                        <br/>
-                            </Col>
-                            <br/>
-                            <Col>
-                            <Card style={{borderColor:"#DD5A34",width:"200px",borderWidth:"1.5px",  overflow:"hidden"}} body>Customer Name</Card>                        <br/>
-                            </Col>
-                            <br/>
-                    </Row> */}
                     </div>  
             )} 
                     <Row>      
                     <div style={{ position:"absolute", top:"85%", width:"400px", left:"65%"}}>
-                    <Button style={{}}>
+                    <Button style={{backgroundColor:"#DD5A34", borderColor:"#DD5A34"}} 
+                    onClick={readOrder}
+                    >
                         Mark as read
                     </Button>      
                     </div>
