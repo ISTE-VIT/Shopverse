@@ -47,7 +47,7 @@ var SignUpS=()=> {
             cookie.save("uid",uid,{ path: "/" });
             console.log(response.user.uid)
           })
-          await axios.post("http://localhost:8080/api/shop",{
+          await axios.post("http://api/shop",{
             shopname:shopname,
             phone_number:phone_number,
             email:email,

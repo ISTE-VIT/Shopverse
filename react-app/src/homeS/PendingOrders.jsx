@@ -12,7 +12,7 @@ export default function PendingOrders() {
     const [data, setData] = useState([])
     
     useEffect(()=>{
-        axios.get(`http://localhost:8080/api/orders/${shopID}`).then((response)=>{
+        axios.get(`http://api/orders/${shopID}`).then((response)=>{
             setData(response.data)
         })
     },[data, shopID])

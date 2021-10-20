@@ -12,7 +12,7 @@ const  ProductStock=()=> {
     console.log(shopID)
     
     useEffect(()=>{
-        axios.get(`http://localhost:8080/api/productList/${shopID}`).then((response)=>{
+        axios.get(`http://api/productList/${shopID}`).then((response)=>{
             setData(response.data)
         })
     }, [data, shopID])

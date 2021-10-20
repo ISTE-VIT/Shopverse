@@ -2,7 +2,7 @@ const firebase = require("firebase/app");
 require("firebase/firestore");
 
 const admin = require("firebase-admin");
-const serviceAccount = require("C:\\Users\\91897\\OneDrive\\Desktop\\test-project-3567e-firebase-adminsdk-i281q-30550bee4b");
+const serviceAccount = require("./ServiceAccountKey/test-project-3567e-firebase-adminsdk-i281q-30550bee4b");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),

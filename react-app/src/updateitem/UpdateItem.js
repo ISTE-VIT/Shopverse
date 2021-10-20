@@ -48,7 +48,7 @@ export default function UpdateItem() {
             quantity=quantityRef.current.value
     
             try {
-                axios.put(`http://localhost:8080/api/updateProduct/${uid}/${currentName}`,{
+                axios.put(`http:/api/updateProduct/${uid}/${currentName}`,{
                     name:pname,
                     quantity:quantity,
                     price:price,

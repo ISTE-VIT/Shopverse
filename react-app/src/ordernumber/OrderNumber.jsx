@@ -31,7 +31,7 @@ function OrderNumber() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/ordersById/${shopID}/${userID}`)
+      .get(`http://api/ordersById/${shopID}/${userID}`)
       .then((response) => {
         setData(response.data);
       });
