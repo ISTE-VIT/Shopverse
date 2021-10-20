@@ -49,7 +49,7 @@ const getShop = async(req, res, next) => {
         data.forEach(doc=>{
             if(doc.data().email===email)
             {
-                res.send(doc.data().uid)
+                 return res.send(doc.data().uid)
             }
         })
         if (!data.exists) {

@@ -15,32 +15,35 @@ import cookie from 'react-cookies'
 export default function SignInS() {
     const emailRef1 = useRef()
     const passwordRef1 = useRef()
+    
     let uid
     const {Login}=useAuth()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false) 
     const history =useHistory()
-
-    async function handleSubmit(e) {
-        e.preventDefault()
+        
+         function handleSubmit(e) {
+            e.preventDefault()
+        
+            try {
+              setError("")
+              setLoading(true)
+               Login(emailRef1.current.value, passwordRef1.current.value).then((response)=>{
+                  console.log(response.user.uid)
+                  uid=response.user.uid
+                  cookie.save('uid',response.user.uid,{ path: "/" })
+                  console.log(uid)
+              })
+              history.push("/Buisness_home")
+            } catch {
+              setError("Failed to log in")
+            }
     
-        try {
-          setError("")
-          setLoading(true)
-          await Login(emailRef1.current.value, passwordRef1.current.value).then((response)=>{
-              console.log(response.user.uid)
-              uid=response.user.uid
-              cookie.save('uid',response.user.uid,{ path: "/" })
-              console.log(uid)
-          })
-          history.push("/Buisness_home")
-        } catch {
-          setError("Failed to log in")
+            
+            setLoading(false)
         }
 
-        
-        setLoading(false)
-    }
+    
     const currentUser=useAuth()
     console.log(currentUser)
 
@@ -68,7 +71,9 @@ export default function SignInS() {
                     <p className="lead">Welcome Back</p>
                 </Jumbotron>
                 <div style={{position:"absolute",top:"45%", left:"10%", width:"60vh"}}>
-                <Form onSubmit={handleSubmit} >
+                <Form onSubmit={()=>{
+                    handleSubmit()
+                }} >
                 {error && <Alert variant="danger">{error}</Alert>}
 
                     <Row>

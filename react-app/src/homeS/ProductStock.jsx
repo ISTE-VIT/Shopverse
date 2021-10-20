@@ -6,26 +6,24 @@ import cookie from 'react-cookies'
 import { useEffect, useState } from 'react'
 
 
-
-
 const  ProductStock=()=> {
     let shopID=cookie.load("uid")
     const [data, setData] = useState([])
+    console.log(shopID)
     
     useEffect(()=>{
         axios.get(`http://localhost:8080/api/productList/${shopID}`).then((response)=>{
             setData(response.data)
-        },[])
-    })
-    // console.log(data[1])
+        })
+    }, [data, shopID])
 
 
     return (
         <div>
             <Container>
                 <div style={{position:"absolute",top:"50%", width:"1000px",height:"240px", overflowY:"scroll", overflowX:"hidden"}}>
-                    {data.map(data=>
-                    <Row>
+                    {data.map((data, index)=>
+                    <Row key={index}>
                         <Col>
                         <Card style={{borderColor:"#DD5A34",width:"500px", borderWidth:"1.5px" }} body>
                             {data.name}

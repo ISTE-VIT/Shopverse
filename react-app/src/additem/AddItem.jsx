@@ -39,7 +39,7 @@ export default function AddItem() {
         let shopID=cookie.load("uid")
         // this.setState({ user, rememberMe });
         // let imageURL=localStorage.getItem("imageURL")
-        console.log(localStorage.getItem("imageURL"))
+        // console.log(localStorage.getItem("imageURL"))
         console.log(imageURL)
         try {
             await axios.post("http://localhost:8080/api/products",{

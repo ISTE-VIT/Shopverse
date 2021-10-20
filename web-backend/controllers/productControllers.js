@@ -10,6 +10,7 @@ const addProduct = async(req, res, next) => {
         res.send('Product added')
     } catch (error) {
         res.status(400).send(error.message);
+        console.log(error)
     }
 }
 

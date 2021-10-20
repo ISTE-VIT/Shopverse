@@ -14,12 +14,12 @@ export default function PendingOrders() {
     useEffect(()=>{
         axios.get(`http://localhost:8080/api/orders/${shopID}`).then((response)=>{
             setData(response.data)
-        },[])
-    })
+        })
+    },[data, shopID])
     return (
         <div>
-            {data.map(data=>
-            <Container>
+            {data.map((data, index)=>
+            <Container key={index}>
             <div style={{position:"absolute",top:"50%", width:"1000px",height:"240px", overflowY:"scroll",overflowX:"hidden"}}>
                     <Row>
                         <Col>

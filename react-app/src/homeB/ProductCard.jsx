@@ -243,7 +243,6 @@ const ProductCard = () => {
                         <Quantity/>
                     </Card.Footer>
                 </Card.Body>
-                {j}
             </Card>
         )} 
         </div>
