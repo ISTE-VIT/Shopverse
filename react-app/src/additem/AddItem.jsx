@@ -42,7 +42,7 @@ export default function AddItem() {
         // console.log(localStorage.getItem("imageURL"))
         console.log(imageURL)
         try {
-            await axios.post("http://api/products",{
+            await axios.post("https://shopverse-backend.azurewebsites.net/api/products",{
             name:pname,
             quantity:quantity,
             price:price,

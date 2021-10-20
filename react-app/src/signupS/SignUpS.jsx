@@ -47,7 +47,7 @@ var SignUpS=()=> {
             cookie.save("uid",uid,{ path: "/" });
             console.log(response.user.uid)
           })
-          await axios.post("http://api/shop",{
+          await axios.post("https://shopverse-backend.azurewebsites.net/api/shop",{
             shopname:shopname,
             phone_number:phone_number,
             email:email,

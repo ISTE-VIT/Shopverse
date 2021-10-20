@@ -2,7 +2,7 @@ import React from 'react';
 import img1 from  "./images/Group 164.svg"
 import img2 from  "./images/Group 163.svg"
 import img3 from "./images/LOGO.svg"
-import {Image, Row, Col, Container, Alert, Button, Card} from 'react-bootstrap'
+import {Image, Row, Col, Container, Alert, Button} from 'react-bootstrap'
 import FeatherIcon from 'feather-icons-react'
 import {useAuth} from '../context/AuthContext'
 import { useHistory, Link } from "react-router-dom"

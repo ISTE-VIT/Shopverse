@@ -46,7 +46,7 @@ var SignUpB=()=> {
             cookie.save("uid",uid,{ path: "/" });
             console.log(response.user.uid)
           })
-          await axios.post("http:/api/user",{
+          await axios.post("https://shopverse-backend.azurewebsites.net/api/user",{
             username:username,
             phone_number:phone_number,
             email:email,

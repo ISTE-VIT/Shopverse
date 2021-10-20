@@ -48,7 +48,7 @@ export default function UpdateItem() {
             quantity=quantityRef.current.value
     
             try {
-                axios.put(`http:/api/updateProduct/${uid}/${currentName}`,{
+                axios.put(`https://shopverse-backend.azurewebsites.net/api/updateProduct/${uid}/${currentName}`,{
                     name:pname,
                     quantity:quantity,
                     price:price,
