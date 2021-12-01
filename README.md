@@ -51,4 +51,4 @@ Shopverse serves as a user guide as well as an execution manual for developers. 
 * [Aman Ali Siddiqui](https://github.com/a-ma-n)
 * [Ved Purohit](https://github.com/Ved257)
 * [Tirth Patel](https://github.com/Tirth22)
-* [Sri Krishna Sai]()
+
