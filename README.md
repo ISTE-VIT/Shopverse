@@ -1,13 +1,13 @@
+# Shopverse
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/74002584/144185252-30ff203d-88d2-4961-ad01-3c60e4eb7544.png">
+
+<p align="center"><a href="https://istevit.in/" target="_blank">
+	<img src="https://ik.imagekit.io/pjbsfzv5ci/111881788-33353b80-89d8-11eb-9db1-746eba087b05_60cRdfJ_4C.png?updatedAt=1636800410212"> </a>
 </p>
 
-# Shopverse
-Shopverse is an enabling experience that supports vulnerable citizens during the covid pandemic by providing consumer-friendly services in both real-time and field time through a solution that is easy and interactive.
 
-## About
-Shopverse serves as a user guide as well as an execution manual for developers. The main purpose of our project is to improve the shopping experience and reduce the time required for shopping by the user, by providing a hassle-free approach as well as enabling vulnerable citizens during the covid pandemic to shop with ease.
+Shopverse is an enabling experience that supports vulnerable citizens during the covid pandemic by providing consumer-friendly services in both real-time and field time through a solution that is easy and interactive. Shopverse serves as a user guide as well as an execution manual for developers. The main purpose of our project is to improve the shopping experience and reduce the time required for shopping by the user, by providing a hassle-free approach as well as enabling vulnerable citizens during the covid pandemic to shop with ease.
+
 
 ## Features
 * Business owners can register as a shopkeeper and set up their business. They will get a Unique QR Code for their shop, which the customers can use to access their inventory.
@@ -17,6 +17,13 @@ Shopverse serves as a user guide as well as an execution manual for developers. 
 * Users will also get a notification on their device if the items they wanted but were not available earlier are now in stock.
 * Developers will give options to users to help improve the ‘Search by image’ option by helping expand the database.
 
+<hr>
+
+<p align="center"><a href="https://istevit.in/" target="_blank">
+	<img src="https://user-images.githubusercontent.com/74002584/144185252-30ff203d-88d2-4961-ad01-3c60e4eb7544.png"> </a>
+</p>
+
+<hr>
 
 ## Tech Stack
 ### FrontEnd
@@ -39,7 +46,7 @@ Shopverse serves as a user guide as well as an execution manual for developers. 
 * Azure
 
 ## Future Prospects
-* Addition of Payment methods (inc. Crypto)
+* Addition of Payment methods (including Cryptocurrency)
 * Try to improve the prediction accuracy of the model by using a bigger dataset/ improved ML algorithm
 * Improve the responsiveness of the website
 
